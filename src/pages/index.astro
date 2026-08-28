@@ -1,30 +1,233 @@
 ---
 import '../styles/global.css';
+
+const profiles = {
+  polimi: 'https://www.dig.polimi.it/en/staff/alessandro.paravano',
+  scholar: 'https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ',
+  orcid: 'https://orcid.org/0000-0002-6884-3712',
+  linkedin: 'https://www.linkedin.com/in/alessandroparavano/',
+  researchgate: 'https://www.researchgate.net/profile/Alessandro-Paravano'
+};
+
+const publications = [
+  {
+    title: 'What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions',
+    authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+    venue: 'Acta Astronautica, Vol. 210, 2023, pp. 554–563',
+    doi: '10.1016/j.actaastro.2023.05.001'
+  },
+  {
+    title: 'End-Users Engagement for Enacting Value of Complex Projects: An Ecological Perspective',
+    authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+    venue: 'Journal of Management in Engineering, Vol. 40, No. 3, 2024',
+    doi: '10.1061/JMENEA.MEENG-5724'
+  },
+  {
+    title: 'A Novel CO₂-Based Real-Options Methodology to Integrate Uncertainty and Flexibility in Infrastructure Appraisal: An Illustrative Application in Offshore Energy Infrastructure',
+    authors: 'Alessandro Paravano, Alessandra Neri, Gregorio Brizzante, Alessandro Bosani, Enrico Cagno, Giorgio Locatelli',
+    venue: 'IEEE Transactions on Engineering Management, Vol. 73, 2026, pp. 3881–3895',
+    doi: '10.1109/TEM.2026.3697823'
+  },
+  {
+    title: 'How satellites strengthen socially sustainable supply chain governance',
+    authors: 'Alessandro Paravano',
+    venue: 'Production Planning & Control, 2026',
+    doi: '10.1080/09537287.2026.2695694'
+  },
+  {
+    title: 'Toward the LEO economy: A value assessment of commercial space stations for space and non-space users',
+    authors: 'Alessandro Paravano, Brendan Rosseau, Giorgio Locatelli, Mathew Weinzierl, Paolo Trucco',
+    venue: 'Acta Astronautica, Vol. 228, 2025, pp. 453–473',
+    doi: '10.1016/j.actaastro.2024.11.060'
+  },
+  {
+    title: 'Planning Complex Projects for Value Creation: A Discussion Guide for Decision Makers',
+    authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+    venue: 'IEEE Engineering Management Review, Vol. 54, No. 4, August 2026',
+    doi: '10.1109/EMR.2025.3628802'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Alessandro Paravano',
+  url: 'https://alessandroparavano.com/',
+  jobTitle: 'Assistant Professor',
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Politecnico di Milano',
+    url: 'https://www.polimi.it/'
+  },
+  sameAs: [
+    profiles.polimi,
+    profiles.scholar,
+    profiles.orcid,
+    profiles.linkedin,
+    profiles.researchgate,
+    'https://www.som.polimi.it/en/faculty/paravano-alessandro/',
+    'https://re.public.polimi.it/cris/rp/rp111035',
+    'https://www.webofscience.com/wos/author/record/KUC-6564-2024',
+    'https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586',
+    'https://openalex.org/authors/A5004512386',
+    'https://authors.repec.org/pro/ppa1688/',
+    'https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061'
+  ],
+  knowsAbout: [
+    'Space Economy',
+    'Complex infrastructures',
+    'Business ecosystems',
+    'Project ecologies',
+    'Value networks',
+    'Systems architecting',
+    'Project management',
+    'Earth Observation',
+    'GNSS',
+    'Positioning Navigation and Timing',
+    'Commercial space stations'
+  ]
+};
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Alessandro Paravano</title>
-  <meta name="description" content="Academic website of Alessandro Paravano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alessandro Paravano | Space Economy &amp; Complex Infrastructures</title>
+  <meta name="description" content="Alessandro Paravano is an Assistant Professor at Politecnico di Milano researching the Space Economy, complex infrastructures, ecosystems, value networks, systems architecting, and project management." />
+  <link rel="canonical" href="https://alessandroparavano.com/" />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a class="brand" href="/">Alessandro Paravano</a>
-    <div class="navlinks">
-      <a href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/about/">About</a>
-      <a href="/media-contact/">Media &amp; Contact</a>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Alessandro Paravano</a>
+      <div class="navlinks">
+        <a href="/research/">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/about/">About</a>
+        <a href="/media-contact/">Media &amp; Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Alessandro<br />Paravano</h1>
+        <p class="hero-role">Assistant Professor at Politecnico di Milano</p>
+        <p class="hero-positioning">Exploring how the Space Economy and complex infrastructures evolve through new technologies, ecosystems, and value networks</p>
+        <div class="hero-links" aria-label="Academic and professional profiles">
+          <a href={profiles.polimi} target="_blank" rel="me noopener">Politecnico di Milano</a><span>·</span>
+          <a href={profiles.scholar} target="_blank" rel="me noopener">Google Scholar</a><span>·</span>
+          <a href={profiles.orcid} target="_blank" rel="me noopener">ORCID</a><span>·</span>
+          <a href={profiles.linkedin} target="_blank" rel="me noopener">LinkedIn</a><span>·</span>
+          <a href={profiles.researchgate} target="_blank" rel="me noopener">ResearchGate</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="/images/alessandro-paravano.png" alt="Portrait of Alessandro Paravano" width="1024" height="1024" />
+      </figure>
+    </section>
+
+    <section class="section container research-home" aria-labelledby="research-heading">
+      <div class="section-intro">
+        <h2 id="research-heading">Research</h2>
+        <p>My research focuses empirically on the Space Economy and complex infrastructures.</p>
+        <p>Across these domains, I study how business ecosystems and ecologies emerge and evolve, how value is created, delivered, and captured, how complex systems are architected, and how projects and infrastructures are organized and managed.</p>
+      </div>
+
+      <div class="research-cards">
+        <article class="research-card">
+          <h3>Space Economy</h3>
+          <p>Research on the evolution of markets, technologies, infrastructures, actors, ecosystems, and value networks shaping value creation in the Space Economy</p>
+          <div class="rule"></div>
+          <p class="topic-line">Earth Observation • GNSS &amp; Satellite Navigation • Satellite Communications (Satcom) • Launchers &amp; Access to Space • Commercial Space Stations &amp; LEO Economy • Lunar Economy • Defense &amp; Resilience • Commercialization • Intellectual Property</p>
+        </article>
+
+        <article class="research-card">
+          <h3>Complex infrastructures</h3>
+          <p>Research on the design, governance, and management of complex infrastructures across their lifecycle.</p>
+          <div class="rule"></div>
+          <p class="topic-line">Space • Aeronautics • Energy • Quantum • Data Centers</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container publications-home" aria-labelledby="selected-publications-heading">
+      <h2 id="selected-publications-heading">Selected publications</h2>
+      <div class="publication-list">
+        {publications.map((publication) => (
+          <article class="publication-item">
+            <h3>{publication.title}</h3>
+            <p class="publication-authors">{publication.authors}</p>
+            <p>{publication.venue}</p>
+            <p>DOI: <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.doi}</a></p>
+            <a class="publication-link" href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">View publication →</a>
+          </article>
+        ))}
+      </div>
+      <a class="all-publications" href="/publications/">View all publications →</a>
+    </section>
+
+    <section class="contact-section">
+      <div class="container contact-inner">
+        <h2>Get in touch</h2>
+        <p>For research collaborations, academic events, media enquiries, or expert commentary related to the Space Economy and complex infrastructures, please get in touch.</p>
+        <a class="email-text" href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+        <div><a class="email-button" href="mailto:alessandro.paravano@polimi.it">Send an email →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-identity">
+        <strong>Alessandro Paravano</strong>
+        <span>Assistant Professor, Politecnico di Milano</span>
+        <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+      </div>
+      <div class="footer-explore">
+        <span class="footer-label">Explore</span>
+        <div><a href="/">Home</a> · <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+      </div>
     </div>
-  </nav>
-</header>
-<main class="container">
-  <h1>Alessandro Paravano</h1>
-  <p class="lede">Site scaffold is live. We will build the final Home page next.</p>
-</main>
-<footer><div class="container">© Alessandro Paravano</div></footer>
+
+    <div class="container footer-profiles">
+      <span class="footer-label profiles-label">Profiles</span>
+      <div class="profiles-grid">
+        <div>
+          <h3>Institutional</h3>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
+        </div>
+        <div>
+          <h3>Academic profiles</h3>
+          <a href={profiles.scholar} target="_blank" rel="me noopener">Google Scholar</a>
+          <a href={profiles.orcid} target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586" target="_blank" rel="me noopener">Semantic Scholar</a>
+          <a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a>
+          <a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a>
+        </div>
+        <div class="profiles-continuation">
+          <h3 aria-hidden="true">Academic profiles continued</h3>
+          <a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a>
+          <a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a>
+          <a href={profiles.researchgate} target="_blank" rel="me noopener">ResearchGate</a>
+          <a href="https://researchid.co/alessandroparavano" target="_blank" rel="me noopener">ResearchID.co</a>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <a href={profiles.linkedin} target="_blank" rel="me noopener">LinkedIn</a>
+          <a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
+  </footer>
 </body>
 </html>
