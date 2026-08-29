@@ -1,30 +1,321 @@
 ---
 import '../../styles/global.css';
+
+const perspectives = [
+  {
+    title: 'Ecosystems & ecologies',
+    description: 'Research on how interdependent actors, organizations, technologies, and institutions form, interact, and evolve within business, innovation, and entrepreneurial ecosystems, as well as project ecologies and other ecological configurations.',
+    publications: [
+      {
+        title: 'End-Users Engagement for Enacting Value of Complex Projects: An Ecological Perspective',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'Journal of Management in Engineering, 2024',
+        doi: '10.1061/JMENEA.MEENG-5724'
+      },
+      {
+        title: 'Value mechanisms of satellite-based infrastructure in the new space economy',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'OECD Space Forum / OECD Publishing, 2024',
+        doi: '10.1787/a729c640-en'
+      }
+    ]
+  },
+  {
+    title: 'Value & value networks',
+    description: 'Research on how value is perceived, created, delivered, captured, and distributed among multiple stakeholders, with particular attention to the transition from linear value chains to interconnected value networks.',
+    publications: [
+      {
+        title: 'What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'Acta Astronautica, 2023',
+        doi: '10.1016/j.actaastro.2023.05.001'
+      },
+      {
+        title: 'Projects benefit realisation through sustainable innovation: drivers and challenges',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'Management Decision, 2025',
+        doi: '10.1108/MD-08-2024-1751'
+      }
+    ]
+  },
+  {
+    title: 'Systems architecting',
+    description: 'Research on how complex systems can be structured and analysed by connecting stakeholder needs, value, technologies, risks, and organizational arrangements across complex socio-technical environments.',
+    publications: [
+      {
+        title: 'Drivers and Barriers in Shaping Resilience Projects: an Investigation in the Space Economy',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'IEEE Transactions on Engineering Management, 2025',
+        doi: '10.1109/TEM.2025.3568298'
+      },
+      {
+        title: 'Toward the LEO economy: A value assessment of commercial space stations for space and non-space users',
+        authors: 'Alessandro Paravano, Brendan Rosseau, Giorgio Locatelli, Mathew Weinzierl, Paolo Trucco',
+        venue: 'Acta Astronautica, Vol. 228, 2025, pp. 453–473',
+        doi: '10.1016/j.actaastro.2024.11.060'
+      }
+    ]
+  },
+  {
+    title: 'Project management',
+    description: 'Research on how complex projects and infrastructures are planned, organized, and managed to generate long-term value under uncertainty, institutional change, sustainability challenges, and evolving stakeholder needs.',
+    publications: [
+      {
+        title: 'Small change or big bang? The shift from legacy to new space project planning',
+        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
+        venue: 'Acta Astronautica, 2026',
+        doi: '10.1016/j.actaastro.2026.07.011'
+      },
+      {
+        title: 'The impact of the New Space Economy on Sustainability: the ESA Business Application Programme case',
+        authors: 'Alessandro Paravano, Marco Patrizi, Emanuele Razzano, Marco Feliciani, Giorgio Locatelli, Paolo Trucco',
+        venue: 'Acta Astronautica, 2024',
+        doi: '10.1016/j.actaastro.2024.05.046'
+      }
+    ]
+  }
+];
+
+const projects = [
+  {
+    title: 'PULSE — PNT User Landscapes and Segment Evolution',
+    meta: 'ESA NAVISP-EL1-129 · Principal Investigator · 2026–2027',
+    description: 'Research on emerging opportunities, markets, applications, and user needs for Positioning, Navigation and Timing (PNT), developing a robust and scalable methodology to identify promising scenarios in non-space sectors and support the competitiveness of the European and Canadian PNT industry.'
+  },
+  {
+    title: 'Definition of the Governance Model for the Space Smart Factory Project',
+    meta: 'Politecnico di Milano · Work Package Leader · 2024–2025',
+    description: 'Research on governance alternatives for the Space Smart Factory, including Public-Private Partnership models, Factory-as-a-Service, programme governance, monitoring and control mechanisms, and long-term project delivery.'
+  },
+  {
+    title: 'NE2AP — Environmental and Economic Appraisal of Power Plants to Plan Net-Zero Infrastructure',
+    meta: 'Politecnico di Milano · Senior Researcher · 2023–2025',
+    description: 'Research on the appraisal of long-lived energy infrastructures, integrating lifecycle assessment, uncertainty, real options, economic evaluation, and environmental decision-making to support net-zero infrastructure development.'
+  },
+  {
+    title: 'Analysis of Application and Service Scenarios Based on BitApps Solutions in the Italian Context',
+    meta: 'Politecnico di Milano · Senior Researcher and Project Manager · 2023–2024',
+    description: 'Research on market opportunities for Earth Observation technologies in Italy, including satellite-based soil monitoring services, application scenarios, stakeholder mapping, adoption challenges, and the evolution of the Italian Earth Observation ecosystem.'
+  },
+  {
+    title: 'The Evolution of the Value Chain in the Space Economy',
+    meta: 'Politecnico di Milano · Principal Investigator · 2023',
+    description: 'Research on the development of Earth Observation-based services and the evolution of the European Space Economy, analysing more than 1,000 ESA projects to investigate applications, digital technology integration, sustainability impacts, and emerging market opportunities.'
+  },
+  {
+    title: 'The State of the Art of New Services Based on Earth Observation Space Data',
+    meta: 'Politecnico di Milano · Principal Investigator · 2022',
+    description: 'Research on emerging services and applications based on Earth Observation data, examining opportunities across non-space industries, adoption barriers, and the integration of satellite, terrestrial, and digital technologies.'
+  },
+  {
+    title: 'Space Economy: Market Analysis and New Business Models — Analysis of the Value Network and Emerging Business Models in the Space Economy',
+    meta: 'Politecnico di Milano · Principal Investigator · 2020–2021',
+    description: 'Research on the evolution of the Space Economy at national and international levels, including market development, technology and demand dynamics, emerging business models, and the transition from linear industrial value chains toward more complex value networks.'
+  },
+  {
+    title: 'Space Economy Observatory',
+    meta: 'Politecnico di Milano · Senior Researcher · 2020–present',
+    description: 'Long-term research programme on the technological, industrial, and business evolution of the Space Economy, including ecosystem mapping, market analysis, technology trends, satellite-based applications, value networks, startup and industry dynamics, and the adoption of space technologies across non-space sectors.'
+  }
+];
+
+const researchSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Research | Alessandro Paravano',
+  url: 'https://alessandroparavano.com/research/',
+  description: 'Research by Alessandro Paravano on the Space Economy, complex infrastructures, ecosystems, value networks, systems architecting, project management, PNT, satellite applications, and emerging space markets.',
+  about: [
+    { '@type': 'Thing', name: 'Space Economy' },
+    { '@type': 'Thing', name: 'Complex infrastructures' },
+    { '@type': 'Thing', name: 'Business ecosystems' },
+    { '@type': 'Thing', name: 'Project ecologies' },
+    { '@type': 'Thing', name: 'Value networks' },
+    { '@type': 'Thing', name: 'Systems architecting' },
+    { '@type': 'Thing', name: 'Project management' },
+    { '@type': 'Thing', name: 'Earth Observation' },
+    { '@type': 'Thing', name: 'Positioning Navigation and Timing' }
+  ],
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Alessandro Paravano',
+    url: 'https://alessandroparavano.com/',
+    jobTitle: 'Assistant Professor',
+    affiliation: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Politecnico di Milano'
+    }
+  }
+};
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Research | Alessandro Paravano</title>
-  <meta name="description" content="Research — Alessandro Paravano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research | Alessandro Paravano — Space Economy &amp; Complex Infrastructures</title>
+  <meta name="description" content="Research by Alessandro Paravano on the Space Economy, complex infrastructures, ecosystems, value networks, systems architecting, project management, PNT, satellite applications, and emerging space markets." />
+  <link rel="canonical" href="https://alessandroparavano.com/research/" />
+  <script type="application/ld+json" set:html={JSON.stringify(researchSchema)}></script>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a class="brand" href="/">Alessandro Paravano</a>
-    <div class="navlinks">
-      <a href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/about/">About</a>
-      <a href="/media-contact/">Media &amp; Contact</a>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Alessandro Paravano</a>
+      <div class="navlinks">
+        <a href="/research/" aria-current="page">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/about/">About</a>
+        <a href="/media-contact/">Media &amp; Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="research-page">
+    <section class="container research-page-hero">
+      <h1>Research</h1>
+      <p>Alessandro Paravano’s research focuses on the Space Economy and complex infrastructures. Across these empirical domains, his work examines ecosystems and ecologies, value creation and value networks, systems architecting, and the organization and management of complex projects and infrastructures.</p>
+    </section>
+
+    <section class="container research-page-section empirical-section" aria-labelledby="empirical-heading">
+      <div class="research-section-heading">
+        <h2 id="empirical-heading">Empirical domains</h2>
+        <p>The research examines how technologies, markets, organizations, infrastructures, and stakeholders interact and evolve in complex technological and institutional environments.</p>
+      </div>
+
+      <div class="empirical-grid">
+        <article class="empirical-domain">
+          <h3>Space Economy</h3>
+          <p class="domain-description">Research on how space markets, technologies, infrastructures, ecosystems, and value networks evolve, commercialize, and create value for space and non-space actors.</p>
+
+          <div class="domain-group">
+            <h4>Space-enabled applications</h4>
+            <p>Earth Observation<br />GNSS / PNT and Satellite Navigation<br />Satellite Communications (Satcom)</p>
+          </div>
+          <div class="domain-group">
+            <h4>Space markets and infrastructures</h4>
+            <p>Launchers and Access to Space<br />Commercial Space Stations and the LEO Economy<br />Lunar Economy</p>
+          </div>
+          <div class="domain-group">
+            <h4>Strategic and commercial dynamics</h4>
+            <p>Commercialization and Market Development<br />Intellectual Property and Technology Commercialization<br />Defense and Resilience</p>
+          </div>
+        </article>
+
+        <article class="empirical-domain">
+          <h3>Complex infrastructures</h3>
+          <p class="domain-description">Research on the appraisal, architecting, governance, organization, and management of complex infrastructure systems under uncertainty and evolving stakeholder needs.</p>
+
+          <div class="domain-group">
+            <h4>Established empirical contexts</h4>
+            <p>Space infrastructures<br />Energy infrastructures<br />High-tech and capital-intensive infrastructure systems</p>
+          </div>
+          <div class="domain-group">
+            <h4>Emerging research areas</h4>
+            <p>Aeronautics<br />Quantum infrastructures<br />Data Centers</p>
+          </div>
+          <p class="emerging-note">These emerging areas represent developing research directions and are not presented as established publication domains.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container research-page-section perspectives-section" aria-labelledby="perspectives-heading">
+      <div class="research-section-heading">
+        <h2 id="perspectives-heading">Research perspectives</h2>
+        <p>These perspectives are used across the empirical domains to investigate how complex technologies, organizations, stakeholders, projects, and infrastructures evolve and create value.</p>
+      </div>
+
+      <div class="perspectives-grid">
+        {perspectives.map((perspective) => (
+          <article class="perspective-item">
+            <h3>{perspective.title}</h3>
+            <p class="perspective-description">{perspective.description}</p>
+            <div class="selected-label">Selected research</div>
+            <div class="perspective-publications">
+              {perspective.publications.map((publication) => (
+                <div class="perspective-publication">
+                  <a class="perspective-publication-title" href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.title}</a>
+                  <p>{publication.authors}</p>
+                  <p>{publication.venue}</p>
+                  <p>DOI: <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.doi}</a></p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="research-projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="research-section-heading projects-heading">
+          <h2 id="projects-heading">Funded research projects &amp; programmes</h2>
+          <p>Research projects and long-term programmes through which Alessandro Paravano has developed empirical research on the Space Economy, satellite applications, value networks, project management, and complex infrastructures.</p>
+        </div>
+
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <article class="project-item">
+              <h3>{project.title}</h3>
+              <p class="project-meta">{project.meta}</p>
+              <p class="project-description">{project.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <a class="research-publications-link" href="/publications/">Explore the full publication portfolio →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-identity">
+        <strong>Alessandro Paravano</strong>
+        <span>Assistant Professor, Politecnico di Milano</span>
+        <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+      </div>
+      <div class="footer-explore">
+        <span class="footer-label">Explore</span>
+        <div><a href="/">Home</a> · <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+      </div>
     </div>
-  </nav>
-</header>
-<main class="container">
-  <h1>Research</h1>
-  <p class="lede">This page is intentionally minimal for the first deployment. We will add the final content and structure step by step.</p>
-</main>
-<footer><div class="container">© Alessandro Paravano</div></footer>
+
+    <div class="container footer-profiles">
+      <span class="footer-label profiles-label">Profiles</span>
+      <div class="profiles-grid">
+        <div>
+          <h3>Institutional</h3>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
+        </div>
+        <div>
+          <h3>Academic profiles</h3>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586" target="_blank" rel="me noopener">Semantic Scholar</a>
+          <a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a>
+          <a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a>
+        </div>
+        <div class="profiles-continuation">
+          <h3>Academic profiles continued</h3>
+          <a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a>
+          <a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a>
+          <a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a>
+          <a href="https://researchid.co/alessandroparavano" target="_blank" rel="me noopener">ResearchID.co</a>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
+  </footer>
 </body>
 </html>
