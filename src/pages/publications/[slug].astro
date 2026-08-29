@@ -35,11 +35,20 @@ const whyItMatters = Array.isArray(publication.whyItMatters)
   : publication.whyItMatters
     ? [publication.whyItMatters]
     : [];
-const allKeywords = [...new Set([...(publication.officialKeywords || []), ...(publication.themes || [])])];
+const allKeywords = [...new Set([
+  ...(publication.officialKeywords || []),
+  ...(publication.themes || []),
+  ...(publication.metadataTopics || [])
+])];
+const schemaAbout = [...new Set(publication.metadataAbout || publication.themes || [])];
+const schemaMentions = [...new Set(publication.metadataMentions || [])];
+const personId = `${siteUrl}/#person`;
+const articleId = `${canonicalUrl}#article`;
 
 const scholarlySchema = {
   '@context': 'https://schema.org',
   '@type': schemaType,
+  '@id': articleId,
   headline: publication.title,
   name: publication.title,
   url: canonicalUrl,
@@ -47,18 +56,11 @@ const scholarlySchema = {
   datePublished: publication.publicationDate || String(publication.year),
   description: publication.seoDescription || publication.about,
   abstract: publication.about,
-  author: publication.authors.map((name) => ({
-    '@type': 'Person',
-    name,
-    ...(name === 'Alessandro Paravano' ? {
-      url: `${siteUrl}/`,
-      sameAs: [
-        'https://orcid.org/0000-0002-6884-3712',
-        'https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ',
-        'https://re.public.polimi.it/cris/rp/rp111035'
-      ]
-    } : {})
-  })),
+  author: publication.authors.map((name) => (
+    name === 'Alessandro Paravano'
+      ? { '@type': 'Person', '@id': personId, name }
+      : { '@type': 'Person', name }
+  )),
   isPartOf: {
     '@type': publication.type === 'journal' ? 'Periodical' : 'CreativeWork',
     name: publication.venue,
@@ -70,7 +72,11 @@ const scholarlySchema = {
   publisher: publication.publisherName ? { '@type': 'Organization', name: publication.publisherName } : undefined,
   identifier: publication.doi ? { '@type': 'PropertyValue', propertyID: 'DOI', value: publication.doi } : undefined,
   keywords: allKeywords,
-  about: (publication.themes || []).map((name) => ({ '@type': 'Thing', name })),
+  about: schemaAbout.map((name) => ({ '@type': 'Thing', name })),
+  mentions: schemaMentions.map((name) => ({ '@type': 'Thing', name })),
+  spatialCoverage: publication.spatialCoverage ? { '@type': 'Place', name: publication.spatialCoverage } : undefined,
+  inLanguage: publication.language || 'en',
+  genre: publication.genre || typeLabel,
   isAccessibleForFree: publication.repositoryLabel === 'Open access',
   sameAs: [doiUrl, publication.publisherUrl, publication.repositoryUrl].filter(Boolean),
   isRelatedTo: relatedPublications.map((item) => ({
@@ -78,6 +84,27 @@ const scholarlySchema = {
     name: item.title,
     url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : item.doi ? `https://doi.org/${item.doi}` : undefined
   }))
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': personId,
+  name: 'Alessandro Paravano',
+  url: `${siteUrl}/`,
+  affiliation: {
+    '@type': 'Organization',
+    name: 'Politecnico di Milano',
+    url: 'https://www.polimi.it/'
+  },
+  sameAs: [
+    'https://orcid.org/0000-0002-6884-3712',
+    'https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ',
+    'https://re.public.polimi.it/cris/rp/rp111035',
+    'https://openalex.org/authors/A5004512386',
+    'https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586',
+    'https://www.linkedin.com/in/alessandroparavano/'
+  ]
 };
 
 const breadcrumbSchema = {
@@ -97,7 +124,6 @@ const breadcrumbSchema = {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{publication.title} | Alessandro Paravano</title>
   <meta name="description" content={publication.seoDescription || publication.takeaway || publication.about} />
-  {allKeywords.length > 0 && <meta name="keywords" content={allKeywords.join(', ')} />}
   <link rel="canonical" href={canonicalUrl} />
 
   <meta name="citation_title" content={publication.title} />
@@ -109,6 +135,9 @@ const breadcrumbSchema = {
   {publication.firstPage && <meta name="citation_firstpage" content={publication.firstPage} />}
   {publication.lastPage && <meta name="citation_lastpage" content={publication.lastPage} />}
   {publication.doi && <meta name="citation_doi" content={publication.doi} />}
+  <meta name="citation_language" content={publication.language || 'en'} />
+  <meta name="citation_abstract_html_url" content={canonicalUrl} />
+  {publication.publisherName && <meta name="citation_publisher" content={publication.publisherName} />}
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content={publication.title} />
@@ -116,6 +145,7 @@ const breadcrumbSchema = {
   <meta property="og:url" content={canonicalUrl} />
   {publication.publicationDate && <meta property="article:published_time" content={publication.publicationDate} />}
 
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(scholarlySchema)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
 </head>
@@ -232,19 +262,6 @@ const breadcrumbSchema = {
         </div>
         <div class="publication-detail-content publication-prose publication-prose-stack">
           {whyItMatters.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
-      </section>
-    )}
-
-    {publication.themes?.length > 0 && (
-      <section class="container publication-detail-section publication-themes-section" aria-labelledby="themes-heading">
-        <div class="publication-detail-heading">
-          <h2 id="themes-heading">Research themes</h2>
-        </div>
-        <div class="publication-detail-content">
-          <div class="publication-theme-list">
-            {publication.themes.map((theme) => <span>{theme}</span>)}
-          </div>
         </div>
       </section>
     )}
