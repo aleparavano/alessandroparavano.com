@@ -214,24 +214,43 @@ export const publications = [
     repositoryLabel: 'Open access',
     fullPage: true,
     themes: ['Space Economy', 'Satellite Applications', 'End Users', 'Value'],
-    takeaway: 'End-users see substantial potential in satellite data, but its value is enacted much more readily in tactical decisions than in strategic ones.',
-    about: 'This study examines how organizations outside the space sector perceive and capture value from satellite data and satellite-based solutions. Focusing on the European New Space Economy, it distinguishes between expected value — what users believe satellite data could deliver — and enacted value — what they actually obtain through adoption. The research shows that the gap between the two is especially important when satellite data moves from low-risk operational uses toward strategic decisions about services and products.',
+    seoDescription: 'Research on how end-user organizations in the European New Space Economy expect and enact value from satellite data, based on 21 manager interviews across three sectors.',
+    takeaway: 'End-users see substantial potential in satellite data, but they capture that value more readily in tactical decisions than in strategic decisions that demand greater resources, capabilities and organizational change.',
+    about: 'The growth of the New Space Economy is making satellite data increasingly accessible to organizations beyond the traditional space sector. Yet access to data does not automatically translate into value for users. This research investigates how organizations perceive and capture value from satellite data and satellite-based solutions. Taking the end-user perspective, the study examines expected value and enacted value across tactical and strategic decisions related to activities, services and products, and explains why substantial gaps can emerge between what organizations expect and what they actually obtain.',
     researchQuestions: [
-      'What value do end-users expect from satellite data in the New Space Economy ecosystem, and why?',
-      'What is the level of adoption — or enacted value — of satellite data in end-users’ decision-making, and why?'
+      'What value do end-users expect from satellite data in the New Space Economy ecosystem? Why?',
+      'What is the level of adoption of satellite data in end-users’ decision-making? Why?'
     ],
-    approach: 'The study uses a qualitative and abductive research design. It draws on 21 manager interviews across Insurance & Finance, Energy & Utilities, and Transportation & Logistics in the European New Space Economy, complemented by internal documents, public sources, and ongoing involvement for triangulation. Value Theory provides the main theoretical lens.',
+    approach: 'The study adopts a qualitative and abductive research design focused on the European New Space Economy ecosystem. It draws on 21 interviews with managers from Insurance & Finance, Energy & Utility, and Transportation & Logistics organizations. Interview evidence is triangulated with internal documents, publicly available data and ongoing involvement. Value Theory provides the theoretical lens, with particular attention to expected value and enacted value.',
+    facts: [
+      { value: '21', label: 'Managers interviewed' },
+      { value: '3', label: 'End-user sectors' },
+      { value: 'Europe', label: 'Empirical context' },
+      { value: 'Value Theory', label: 'Theoretical lens' }
+    ],
     findings: [
-      'End-users generally report high expected value from satellite data, but adoption is concentrated in tactical rather than strategic decisions.',
-      'Satellite data is enacted most consistently in decisions about internal activities; the gap between expected and enacted value is larger for services and especially products.',
-      'Strategic adoption is constrained by transaction costs, limited satellite-data literacy and competencies, dependence on existing resources, and uncertainty about long-term value.'
+      {
+        title: 'Tactical adoption comes first',
+        text: 'End-users mostly adopt satellite data for tactical decisions and for improving internal activities. These uses involve lower risk, shorter time horizons and value that is easier to assess than in strategic decisions.'
+      },
+      {
+        title: 'Expected and enacted value differ across sectors',
+        text: 'Transportation & Logistics shows stronger alignment between expected and enacted value, reflecting greater experience with satellite navigation. Energy & Utility and Insurance & Finance show larger gaps, especially for strategic decisions concerning services and products.'
+      },
+      {
+        title: 'Capabilities and transaction costs shape the value gap',
+        text: 'High transaction costs, limited resources and competencies, dependence on existing data and routines, uncertainty about long-term value, and weak alignment between available solutions and end-user needs all constrain adoption.'
+      }
     ],
-    whyItMatters: 'The paper establishes an end-user perspective on value mechanisms in the New Space Economy. For research, it applies Value Theory to explain how expected and enacted value diverge in an emerging technology ecosystem. For space agencies and policymakers, the findings point to literacy and capability building as adoption levers. For satellite-data providers, they suggest that helping users develop competencies and translating technical capabilities into concrete user needs can be as important as improving the data itself.',
+    whyItMatters: [
+      'The research brings the end-user perspective into the study of value mechanisms in the New Space Economy and shows how Value Theory can explain the divergence between expected value and enacted value in an emerging technology ecosystem.',
+      'For policymakers, space agencies and satellite-data providers, the findings suggest that adoption depends not only on technical performance. Building user capabilities, reducing transaction costs and aligning solutions with concrete end-user needs are also central to turning satellite data into realized value.'
+    ],
     citation: 'Paravano, A., Locatelli, G., & Trucco, P. (2023). What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions. Acta Astronautica, 210, 554–563. https://doi.org/10.1016/j.actaastro.2023.05.001',
     related: [
       'end-users-engagement-enacting-value-complex-projects',
-      'toward-the-leo-economy-commercial-space-stations',
-      'value-mechanisms-satellite-infrastructure-new-space-economy'
+      'value-mechanisms-satellite-infrastructure-new-space-economy',
+      'toward-the-leo-economy-commercial-space-stations'
     ],
     officialKeywords: ['Value management', 'Economic value', 'Social value', 'Environmental value', 'SDGs', 'ESG']
   },
@@ -726,7 +745,7 @@ export const publications = [
     year: 2022,
     title: 'Addressing the Space Sector Skills Gap',
     authors: ['Alessandro Paravano et al.'],
-    venue: 'Space Generation Congress (SGC) — Working Group 4',
+    venue: 'Space Generation Congress (SGC), Working Group 4',
     details: 'Paris, France · 13–16 September 2022',
     conferenceUrl: 'https://spacegeneration.org/sgc2022/working-groups'
   },
