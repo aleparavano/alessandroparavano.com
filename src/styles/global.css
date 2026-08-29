@@ -238,19 +238,19 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
 .perspective-publication p a { color: #4f6574; }
 
 .research-projects-section { border-top: 1px solid var(--line); background: #fafafa; padding: 84px 0 96px; }
-.projects-heading { margin-bottom: 54px; }
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 78px; row-gap: 0; }
-.project-item { padding: 27px 0 30px; border-top: 1px solid var(--line); }
-.project-item h3 { max-width: 520px; color: var(--accent); font-size: 21px; line-height: 1.26; letter-spacing: -.01em; }
-.project-meta { margin-top: 10px; color: #5c666d; font-size: 11.5px; font-weight: 700; line-height: 1.42; letter-spacing: .045em; text-transform: uppercase; }
-.project-description { max-width: 540px; margin-top: 13px; color: #454d52; font-size: 14px; line-height: 1.55; }
-.research-publications-link { display: inline-block; margin-top: 52px; color: var(--text); font-size: 13px; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; }
+.projects-heading { margin-bottom: 46px; }
+.projects-list { border-top: 1px solid var(--line); }
+.project-item { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); column-gap: 72px; align-items: start; padding: 28px 0 30px; border-bottom: 1px solid var(--line); }
+.project-item h3 { max-width: 470px; color: var(--accent); font-size: 21px; line-height: 1.26; letter-spacing: -.01em; }
+.project-meta { grid-column: 1; margin-top: 9px; color: #687279; font-size: 12px; font-weight: 650; line-height: 1.42; letter-spacing: .018em; text-transform: none; }
+.project-description { grid-column: 2; grid-row: 1 / span 2; max-width: 720px; margin-top: 1px; color: #454d52; font-size: 14.5px; line-height: 1.58; }
+.research-publications-link { display: inline-block; margin-top: 48px; color: var(--text); font-size: 13px; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; }
 .research-publications-link:hover { color: var(--accent); }
 
 @media (max-width: 980px) {
   .research-section-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
   .research-section-heading > p { max-width: 760px; }
-  .empirical-grid, .perspectives-grid, .projects-grid { column-gap: 46px; }
+  .empirical-grid, .perspectives-grid { column-gap: 46px; }
   .perspective-description { min-height: 0; }
 }
 
@@ -261,10 +261,126 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
   .research-page-section { padding-top: 62px; padding-bottom: 68px; }
   .research-section-heading { margin-bottom: 40px; }
   .research-section-heading h2 { font-size: 39px; }
-  .empirical-grid, .perspectives-grid, .projects-grid { grid-template-columns: 1fr; gap: 42px; }
+  .empirical-grid, .perspectives-grid { grid-template-columns: 1fr; gap: 42px; }
   .empirical-domain h3, .perspective-item h3 { font-size: 26px; }
   .perspective-description { min-height: 0; }
   .research-projects-section { padding: 62px 0 70px; }
-  .projects-grid { gap: 0; }
+  .projects-list { border-top: 1px solid var(--line); }
+  .project-item { grid-template-columns: 1fr; gap: 0; padding: 25px 0 27px; }
   .project-item h3 { font-size: 20px; }
+  .project-description { grid-column: 1; grid-row: auto; margin-top: 13px; }
+}
+
+/* Research page — compact editorial imagery */
+.research-page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+  gap: 72px;
+  align-items: end;
+}
+.research-hero-copy { align-self: center; }
+.research-hero-copy > p {
+  max-width: 720px;
+  margin-top: 30px;
+  color: #4f585e;
+  font-size: 18px;
+  line-height: 1.58;
+}
+.research-hero-visual { margin: 0; }
+.research-hero-visual img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+  object-position: 50% 66%;
+  filter: saturate(.9) contrast(1.03);
+}
+.research-hero-visual figcaption,
+.research-visual figcaption {
+  margin-top: 8px;
+  color: #7a8185;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+.research-hero-visual figcaption a,
+.research-visual figcaption a { color: #667985; }
+
+.research-visual { margin: 34px 0 0; }
+.research-visual img {
+  display: block;
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+}
+.research-visual--network { margin-bottom: 4px; }
+.research-visual figcaption { margin-top: 6px; max-width: 860px; }
+.research-visual--antennas img {
+  object-position: 50% 48%;
+  filter: saturate(.72) contrast(1.04);
+}
+
+.network-visual-frame {
+  position: relative;
+  overflow: hidden;
+  height: 148px;
+  background: #0b1830;
+}
+.network-visual-frame img {
+  height: 100%;
+  object-position: 50% 51%;
+  filter: saturate(.82) brightness(.76) contrast(1.08);
+}
+.network-visual-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(6,20,38,.15), rgba(8,30,48,.02) 46%, rgba(6,20,38,.20));
+  pointer-events: none;
+}
+.network-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.network-arcs path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+.network-arcs--primary path {
+  stroke: rgba(205, 228, 238, .72);
+  stroke-width: 1.25;
+}
+.network-arcs--secondary path {
+  stroke: rgba(242, 225, 184, .50);
+  stroke-width: .9;
+}
+.network-nodes circle {
+  fill: rgba(246, 248, 244, .96);
+  stroke: rgba(92, 139, 163, .72);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px rgba(225, 240, 247, .72));
+}
+
+.research-projects-section .projects-heading h2 { max-width: 520px; }
+
+@media (max-width: 980px) {
+  .research-page-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .78fr);
+    gap: 46px;
+  }
+  .research-hero-visual img { height: 140px; }
+}
+
+@media (max-width: 760px) {
+  .research-page-hero { display: block; }
+  .research-hero-visual { margin-top: 26px; }
+  .research-hero-visual img { height: 138px; }
+  .research-visual { margin-top: 28px; }
+  .research-visual img,
+  .network-visual-frame { height: 138px; }
 }
