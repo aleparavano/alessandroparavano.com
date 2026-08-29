@@ -12,19 +12,41 @@ export function getStaticPaths() {
 const { publication } = Astro.props;
 const siteUrl = 'https://alessandroparavano.com';
 const canonicalUrl = `${siteUrl}/publications/${publication.slug}/`;
-const doiUrl = `https://doi.org/${publication.doi}`;
+const doiUrl = publication.doi ? `https://doi.org/${publication.doi}` : null;
+const typeLabels = {
+  journal: 'Journal article',
+  chapter: 'Book chapter',
+  report: 'Report',
+  book: 'Book',
+  editorial: 'Editorial'
+};
+const typeLabel = publication.typeLabel || typeLabels[publication.type] || 'Publication';
+const schemaType = publication.schemaType || 'ScholarlyArticle';
 const relatedPublications = (publication.related || [])
   .map((slug) => publications.find((item) => item.slug === slug))
   .filter(Boolean);
+const findings = (publication.findings || []).map((finding, index) =>
+  typeof finding === 'string'
+    ? { title: `Finding ${index + 1}`, text: finding }
+    : finding
+);
+const whyItMatters = Array.isArray(publication.whyItMatters)
+  ? publication.whyItMatters
+  : publication.whyItMatters
+    ? [publication.whyItMatters]
+    : [];
+const allKeywords = [...new Set([...(publication.officialKeywords || []), ...(publication.themes || [])])];
 
 const scholarlySchema = {
   '@context': 'https://schema.org',
-  '@type': 'ScholarlyArticle',
+  '@type': schemaType,
   headline: publication.title,
   name: publication.title,
   url: canonicalUrl,
   mainEntityOfPage: canonicalUrl,
   datePublished: publication.publicationDate || String(publication.year),
+  description: publication.seoDescription || publication.about,
+  abstract: publication.about,
   author: publication.authors.map((name) => ({
     '@type': 'Person',
     name,
@@ -38,7 +60,7 @@ const scholarlySchema = {
     } : {})
   })),
   isPartOf: {
-    '@type': 'Periodical',
+    '@type': publication.type === 'journal' ? 'Periodical' : 'CreativeWork',
     name: publication.venue,
     issn: publication.issn || undefined
   },
@@ -46,16 +68,15 @@ const scholarlySchema = {
   pageStart: publication.firstPage || undefined,
   pageEnd: publication.lastPage || undefined,
   publisher: publication.publisherName ? { '@type': 'Organization', name: publication.publisherName } : undefined,
-  identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: publication.doi },
-  keywords: [...(publication.officialKeywords || []), ...(publication.themes || [])],
+  identifier: publication.doi ? { '@type': 'PropertyValue', propertyID: 'DOI', value: publication.doi } : undefined,
+  keywords: allKeywords,
   about: (publication.themes || []).map((name) => ({ '@type': 'Thing', name })),
-  abstract: publication.about,
   isAccessibleForFree: publication.repositoryLabel === 'Open access',
   sameAs: [doiUrl, publication.publisherUrl, publication.repositoryUrl].filter(Boolean),
   isRelatedTo: relatedPublications.map((item) => ({
     '@type': 'ScholarlyArticle',
     name: item.title,
-    url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : `https://doi.org/${item.doi}`
+    url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : item.doi ? `https://doi.org/${item.doi}` : undefined
   }))
 };
 
@@ -75,22 +96,25 @@ const breadcrumbSchema = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{publication.title} | Alessandro Paravano</title>
-  <meta name="description" content={publication.takeaway || publication.about} />
+  <meta name="description" content={publication.seoDescription || publication.takeaway || publication.about} />
+  {allKeywords.length > 0 && <meta name="keywords" content={allKeywords.join(', ')} />}
   <link rel="canonical" href={canonicalUrl} />
 
   <meta name="citation_title" content={publication.title} />
   {publication.authors.map((author) => <meta name="citation_author" content={author} />)}
   <meta name="citation_publication_date" content={publication.publicationDate || String(publication.year)} />
   <meta name="citation_journal_title" content={publication.venue} />
+  {publication.issn && <meta name="citation_issn" content={publication.issn} />}
   {publication.volume && <meta name="citation_volume" content={publication.volume} />}
   {publication.firstPage && <meta name="citation_firstpage" content={publication.firstPage} />}
   {publication.lastPage && <meta name="citation_lastpage" content={publication.lastPage} />}
-  <meta name="citation_doi" content={publication.doi} />
+  {publication.doi && <meta name="citation_doi" content={publication.doi} />}
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content={publication.title} />
-  <meta property="og:description" content={publication.takeaway || publication.about} />
+  <meta property="og:description" content={publication.seoDescription || publication.takeaway || publication.about} />
   <meta property="og:url" content={canonicalUrl} />
+  {publication.publicationDate && <meta property="article:published_time" content={publication.publicationDate} />}
 
   <script type="application/ld+json" set:html={JSON.stringify(scholarlySchema)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
@@ -111,116 +135,175 @@ const breadcrumbSchema = {
   <main class="publication-detail-page">
     <section class="container publication-detail-hero">
       <a class="publication-back" href="/publications/">← All publications</a>
-      <p class="publication-type-label">Journal article</p>
-      <h1>{publication.title}</h1>
-      <p class="publication-detail-authors">
-        {publication.authors.map((author, index) => (
-          <>
-            {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
-            {index < publication.authors.length - 1 ? ', ' : ''}
-          </>
-        ))}
-      </p>
-      <p class="publication-detail-venue"><em>{publication.venue}</em> · {publication.details}</p>
-      <div class="publication-detail-links" aria-label="Publication links">
-        <a href={doiUrl} target="_blank" rel="noopener">DOI</a>
-        {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
-        {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+
+      <div class="publication-hero-grid">
+        <div class="publication-hero-main">
+          <p class="publication-type-label">{typeLabel} <span aria-hidden="true">·</span> {publication.year}</p>
+          <h1>{publication.title}</h1>
+          <p class="publication-detail-authors">
+            {publication.authors.map((author, index) => (
+              <>
+                {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+                {index < publication.authors.length - 1 ? ', ' : ''}
+              </>
+            ))}
+          </p>
+          <p class="publication-detail-venue"><em>{publication.venue}</em>{publication.details ? <> <span aria-hidden="true">·</span> {publication.details}</> : ''}</p>
+        </div>
+
+        <div class="publication-source-panel" aria-label="Publication links">
+          <span class="publication-source-label">Access</span>
+          {doiUrl && <a href={doiUrl} target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>}
+          {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher <span aria-hidden="true">↗</span></a>}
+          {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'} <span aria-hidden="true">↗</span></a>}
+        </div>
       </div>
-      <p class="publication-takeaway">{publication.takeaway}</p>
+
+      {publication.takeaway && (
+        <div class="publication-takeaway-block">
+          <span>Core insight</span>
+          <p>{publication.takeaway}</p>
+        </div>
+      )}
     </section>
 
-    <section class="container publication-detail-section publication-about-section" aria-labelledby="about-research-heading">
+    <section class="container publication-detail-section" aria-labelledby="about-research-heading">
       <div class="publication-detail-heading">
+        <p class="publication-section-number">01</p>
         <h2 id="about-research-heading">About this research</h2>
       </div>
-      <div class="publication-detail-content">
+      <div class="publication-detail-content publication-prose">
         <p>{publication.about}</p>
       </div>
     </section>
 
-    <section class="container publication-detail-section" aria-labelledby="research-question-heading">
-      <div class="publication-detail-heading">
-        <h2 id="research-question-heading">Research question</h2>
-      </div>
-      <div class="publication-detail-content">
-        <ol class="research-question-list">
-          {publication.researchQuestions.map((question) => <li>{question}</li>)}
-        </ol>
-      </div>
-    </section>
-
-    <section class="container publication-detail-section" aria-labelledby="approach-heading">
-      <div class="publication-detail-heading">
-        <h2 id="approach-heading">Approach</h2>
-      </div>
-      <div class="publication-detail-content">
-        <p>{publication.approach}</p>
-      </div>
-    </section>
-
-    <section class="container publication-detail-section" aria-labelledby="findings-heading">
-      <div class="publication-detail-heading">
-        <h2 id="findings-heading">Key findings</h2>
-      </div>
-      <div class="publication-detail-content">
-        <ol class="key-findings-list">
-          {publication.findings.map((finding) => <li>{finding}</li>)}
-        </ol>
-      </div>
-    </section>
-
-    <section class="container publication-detail-section" aria-labelledby="why-matters-heading">
-      <div class="publication-detail-heading">
-        <h2 id="why-matters-heading">Why it matters</h2>
-      </div>
-      <div class="publication-detail-content">
-        <p>{publication.whyItMatters}</p>
-      </div>
-    </section>
-
-    <section class="container publication-detail-section" aria-labelledby="themes-heading">
-      <div class="publication-detail-heading">
-        <h2 id="themes-heading">Research themes</h2>
-      </div>
-      <div class="publication-detail-content">
-        <div class="publication-theme-list">
-          {publication.themes.map((theme) => <span>{theme}</span>)}
-        </div>
-      </div>
-    </section>
-
-    {relatedPublications.length > 0 && (
-      <section class="container publication-detail-section" aria-labelledby="related-heading">
+    {publication.researchQuestions?.length > 0 && (
+      <section class="container publication-detail-section" aria-labelledby="research-question-heading">
         <div class="publication-detail-heading">
-          <h2 id="related-heading">Related research</h2>
+          <p class="publication-section-number">02</p>
+          <h2 id="research-question-heading">Research questions</h2>
         </div>
-        <div class="publication-detail-content related-publications-list">
-          {relatedPublications.map((item) => (
-            <article class="related-publication">
-              <h3>
-                <a href={item.fullPage ? `/publications/${item.slug}/` : `https://doi.org/${item.doi}`} target={item.fullPage ? undefined : '_blank'} rel={item.fullPage ? undefined : 'noopener'}>{item.title}</a>
-              </h3>
-              <p>{item.venue} · {item.year}</p>
+        <div class="publication-detail-content research-question-grid">
+          {publication.researchQuestions.map((question, index) => (
+            <div class="research-question-item">
+              <span>RQ{index + 1}</span>
+              <p>{question}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {publication.approach && (
+      <section class="container publication-detail-section" aria-labelledby="approach-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">03</p>
+          <h2 id="approach-heading">Approach</h2>
+        </div>
+        <div class="publication-detail-content publication-prose">
+          <p>{publication.approach}</p>
+          {publication.facts?.length > 0 && (
+            <dl class="publication-facts" aria-label="Research snapshot">
+              {publication.facts.map((fact) => (
+                <div>
+                  <dt>{fact.value}</dt>
+                  <dd>{fact.label}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </div>
+      </section>
+    )}
+
+    {findings.length > 0 && (
+      <section class="container publication-detail-section" aria-labelledby="findings-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">04</p>
+          <h2 id="findings-heading">Key findings</h2>
+        </div>
+        <div class="publication-detail-content key-findings-editorial">
+          {findings.map((finding, index) => (
+            <article class="key-finding-item">
+              <span class="key-finding-number">0{index + 1}</span>
+              <div>
+                <h3>{finding.title}</h3>
+                <p>{finding.text}</p>
+              </div>
             </article>
           ))}
         </div>
       </section>
     )}
 
-    <section class="container publication-detail-section publication-citation-section" aria-labelledby="citation-heading">
-      <div class="publication-detail-heading">
-        <h2 id="citation-heading">Citation</h2>
-      </div>
-      <div class="publication-detail-content">
-        <p class="publication-citation">{publication.citation}</p>
-        <div class="publication-detail-links publication-detail-links--bottom">
-          <a href={doiUrl} target="_blank" rel="noopener">DOI</a>
-          {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
-          {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+    {whyItMatters.length > 0 && (
+      <section class="container publication-detail-section" aria-labelledby="why-matters-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">05</p>
+          <h2 id="why-matters-heading">Why it matters</h2>
         </div>
-      </div>
-    </section>
+        <div class="publication-detail-content publication-prose publication-prose-stack">
+          {whyItMatters.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+    )}
+
+    {publication.themes?.length > 0 && (
+      <section class="container publication-detail-section publication-themes-section" aria-labelledby="themes-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">06</p>
+          <h2 id="themes-heading">Research themes</h2>
+        </div>
+        <div class="publication-detail-content">
+          <div class="publication-theme-list">
+            {publication.themes.map((theme) => <span>{theme}</span>)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {relatedPublications.length > 0 && (
+      <section class="container publication-detail-section" aria-labelledby="related-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">07</p>
+          <h2 id="related-heading">Related research</h2>
+        </div>
+        <div class="publication-detail-content related-publications-list">
+          {relatedPublications.map((item) => {
+            const targetUrl = item.fullPage ? `/publications/${item.slug}/` : item.doi ? `https://doi.org/${item.doi}` : item.publisherUrl;
+            return (
+              <article class="related-publication">
+                <div>
+                  <h3><a href={targetUrl} target={item.fullPage ? undefined : '_blank'} rel={item.fullPage ? undefined : 'noopener'}>{item.title}</a></h3>
+                  <p>{item.venue} <span aria-hidden="true">·</span> {item.year}</p>
+                </div>
+                <a class="related-publication-action" href={targetUrl} target={item.fullPage ? undefined : '_blank'} rel={item.fullPage ? undefined : 'noopener'}>
+                  {item.fullPage ? 'Explore research' : 'View publication'} <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    {publication.citation && (
+      <section class="container publication-detail-section publication-citation-section" aria-labelledby="citation-heading">
+        <div class="publication-detail-heading">
+          <p class="publication-section-number">08</p>
+          <h2 id="citation-heading">Citation</h2>
+        </div>
+        <div class="publication-detail-content">
+          <p class="publication-citation">{publication.citation}</p>
+          <div class="publication-detail-links publication-detail-links--bottom">
+            {doiUrl && <a href={doiUrl} target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>}
+            {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher <span aria-hidden="true">↗</span></a>}
+            {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'} <span aria-hidden="true">↗</span></a>}
+          </div>
+          <a class="publication-return-link" href="/publications/">← Back to all publications</a>
+        </div>
+      </section>
+    )}
   </main>
 
   <footer class="site-footer">
@@ -231,8 +314,8 @@ const breadcrumbSchema = {
         <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
       </div>
       <div class="footer-explore">
-        <span class="footer-label">Explore</span>
-        <div><a href="/">Home</a> · <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+        <span class="footer-label">Navigation</span>
+        <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a>
       </div>
     </div>
 
@@ -241,9 +324,9 @@ const breadcrumbSchema = {
       <div class="profiles-grid">
         <div>
           <h3>Institutional</h3>
-          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
-          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
-          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano, DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano, School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano, University Profile</a>
           <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
         </div>
         <div>
