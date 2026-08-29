@@ -1,6 +1,6 @@
 ---
 import '../../styles/global.css';
-import { journalArticles, booksAndChapters, editorials } from './publications.js';
+import { journalArticles, booksAndChapters, conferencePapers, editorials } from './publications.js';
 
 const siteUrl = 'https://alessandroparavano.com';
 
@@ -12,13 +12,23 @@ const byYear = (items) => {
   }));
 };
 
-const allForSchema = [...journalArticles, ...booksAndChapters, ...editorials];
+const allForSchema = [...journalArticles, ...booksAndChapters, ...conferencePapers, ...editorials];
+
+const primaryUrl = (item) => {
+  if (item.fullPage) return `${siteUrl}/publications/${item.slug}/`;
+  if (item.repositoryUrl) return item.repositoryUrl;
+  if (item.recordUrl) return item.recordUrl;
+  if (item.doi) return `https://doi.org/${item.doi}`;
+  if (item.publisherUrl) return item.publisherUrl;
+  if (item.conferenceUrl) return item.conferenceUrl;
+  return `${siteUrl}/publications/`;
+};
 const publicationsSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Publications | Alessandro Paravano',
   url: `${siteUrl}/publications/`,
-  description: 'Peer-reviewed journal articles, book chapters, reports and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting.',
+  description: 'Journal articles, books, chapters, reports, international conference papers and presentations, and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting.',
   author: {
     '@type': 'Person',
     name: 'Alessandro Paravano',
@@ -31,17 +41,20 @@ const publicationsSchema = {
       '@type': 'ListItem',
       position: index + 1,
       item: {
-        '@type': item.type === 'report' ? 'Report' : item.type === 'chapter' ? 'Chapter' : 'ScholarlyArticle',
+        '@type': item.type === 'report' ? 'Report' : item.type === 'chapter' ? 'Chapter' : item.type === 'conference' ? 'CreativeWork' : 'ScholarlyArticle',
         name: item.title,
         datePublished: String(item.year),
         author: item.authors.filter((name) => !name.includes('et al.')).map((name) => ({ '@type': 'Person', name })),
         isPartOf: { '@type': 'CreativeWork', name: item.venue },
         identifier: item.doi ? `https://doi.org/${item.doi}` : undefined,
-        url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : `https://doi.org/${item.doi}`,
+        url: primaryUrl(item),
         sameAs: [
           item.doi ? `https://doi.org/${item.doi}` : null,
           item.publisherUrl,
-          item.repositoryUrl
+          item.repositoryUrl,
+          item.recordUrl,
+          item.conferenceUrl,
+          item.publishedVersionUrl
         ].filter(Boolean)
       }
     }))
@@ -56,9 +69,47 @@ const renderYearGroups = byYear;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Publications | Alessandro Paravano — Space Economy &amp; Complex Infrastructures</title>
-  <meta name="description" content="Peer-reviewed journal articles, book chapters, reports and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting." />
+  <meta name="description" content="Journal articles, books and chapters, international conference papers and presentations, and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting." />
   <link rel="canonical" href="https://alessandroparavano.com/publications/" />
   <script type="application/ld+json" set:html={JSON.stringify(publicationsSchema)}></script>
+
+  <style>
+    .publication-index-list--conference .publication-index-item {
+      padding-top: 17px;
+      padding-bottom: 18px;
+      row-gap: 10px;
+    }
+    .publication-index-list--conference .publication-index-main h4 {
+      font-size: 16.5px;
+      line-height: 1.34;
+    }
+    .publication-index-list--conference .publication-index-authors {
+      margin-top: 5px;
+      font-size: 13.5px;
+    }
+    .publication-index-list--conference .publication-index-venue {
+      margin-top: 2px;
+      font-size: 13px;
+    }
+    .publication-index-list--conference .publication-index-actions {
+      gap: 6px 13px;
+      min-width: 190px;
+    }
+    .publication-index-list--conference .publication-index-actions a {
+      font-size: 11.5px;
+    }
+    .publication-index-actions .conference-published-link {
+      color: var(--text);
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .publication-index-list--conference .publication-index-item {
+        padding-top: 17px;
+        padding-bottom: 18px;
+      }
+      .publication-index-list--conference .publication-index-main h4 { font-size: 16px; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -167,6 +218,59 @@ const renderYearGroups = byYear;
                   </div>
                 </article>
               ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="container publications-page-section" aria-labelledby="conference-heading">
+      <div class="publications-section-heading">
+        <h2 id="conference-heading">Conference papers &amp; presentations</h2>
+        <p>International scientific conference outputs, ordered from the most recent. Where available, links lead to proceedings, institutional records, conference materials, or a subsequent peer-reviewed publication.</p>
+      </div>
+
+      <div class="publications-index">
+        {renderYearGroups(conferencePapers).map((group) => (
+          <section class="publication-year-group" aria-labelledby={`conference-${group.year}`}>
+            <h3 id={`conference-${group.year}`} class="publication-year">{group.year}</h3>
+            <div class="publication-index-list publication-index-list--conference">
+              {group.items.map((publication) => {
+                const itemUrl = publication.repositoryUrl || publication.recordUrl || (publication.doi ? `https://doi.org/${publication.doi}` : null) || publication.conferenceUrl;
+                return (
+                  <article class="publication-index-item">
+                    <div class="publication-index-main">
+                      <h4>
+                        {itemUrl ? (
+                          <a href={itemUrl} target="_blank" rel="noopener">{publication.title}</a>
+                        ) : (
+                          publication.title
+                        )}
+                      </h4>
+                      <p class="publication-index-authors">
+                        {publication.authors.map((author, index) => (
+                          <>
+                            {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+                            {index < publication.authors.length - 1 ? ', ' : ''}
+                          </>
+                        ))}
+                      </p>
+                      <p class="publication-index-venue"><em>{publication.venue}</em> · {publication.details}</p>
+                    </div>
+                    <div class="publication-index-actions" aria-label={`Links for ${publication.title}`}>
+                      {publication.doi && <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">DOI</a>}
+                      {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">Repository</a>}
+                      {publication.recordUrl && <a href={publication.recordUrl} target="_blank" rel="noopener">{publication.recordLabel || 'Record'}</a>}
+                      {publication.conferenceUrl && <a href={publication.conferenceUrl} target="_blank" rel="noopener">Conference</a>}
+                      {publication.publishedVersionUrl && (
+                        <a class="conference-published-link" href={publication.publishedVersionUrl} target="_blank" rel="noopener" title={publication.publishedVersionTitle}>
+                          {publication.publishedVersionLabel || 'Related publication'} →
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
         ))}

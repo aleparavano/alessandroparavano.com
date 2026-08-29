@@ -343,6 +343,465 @@ export const publications = [
     themes: ['Space Program Governance', 'New Space', 'Governance Models', 'Commercial Space']
   },
 
+  /* International conference proceedings and presentations */
+// 2026
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Beyond the Hype: LEO Manufacturing Value for Non-Space Customers',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Antalya, Türkiye · 5–9 October 2026',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2026/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Designing Program Governance for Future Space Exploration: Lessons from Artemis',
+    authors: ['Alessandro Paravano', 'Valentina Zancan', 'C. Airoldi', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Antalya, Türkiye · 5–9 October 2026',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2026/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Beyond the Buzz: Mapping ISAM’s Economic Domains and Business Logics',
+    authors: ['Alessandro Paravano', 'V. Cartez-Cortez', 'M. Kim'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Antalya, Türkiye · 5–9 October 2026',
+    recordUrl: 'https://iafastro.directory/iac/paper/id/107596/abstract-pdf/IAC-26%2CE3%2C3%2C2%2Cx107596.brief.pdf',
+    recordLabel: 'Abstract',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2026/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Closing the Last Mile of Earth Observation: How Municipal Governments Actually Adopt Satellite Solutions',
+    authors: ['Alessandro Paravano', 'D. Mennuti', 'R. Muscinelli'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Antalya, Türkiye · 5–9 October 2026',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2026/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Modelling complex project value beyond delivery: a systems architecting methodology',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'XXXI AIDI “Francesco Turco” Summer School',
+    details: 'Lecco, Italy · 8–11 September 2026',
+    conferenceUrl: 'https://www.summerschool-aidi.it/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'When temporary organisations lead the dance: entrainment in megaprojects and institutional governance',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'European Academy of Management Conference (EURAM)',
+    details: 'Kristiansand, Norway · 16–19 June 2026',
+    conferenceUrl: 'https://conferences.euram.academy/2026conference/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'From Label to Theoretical Lens: A Meta-Theory of Project Ecosystems',
+    authors: ['Alessandro Paravano'],
+    venue: 'International Research Network on Organizing by Projects (IRNOP)',
+    details: 'Delft, Netherlands · 2–5 June 2026',
+    conferenceUrl: 'https://www.irnop.org/'
+  },
+  {
+    type: 'conference',
+    year: 2026,
+    title: 'Modelling the value of space project ecologies through systems architecting',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'IEEE International Systems Conference (SysCon)',
+    details: 'Halifax, Canada · 6–9 April 2026 · pp. 1–8',
+    doi: '10.1109/SysCon66367.2026.11503609',
+    conferenceUrl: 'https://2026.ieeesyscon.org/'
+  },
+
+  // 2025
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Cross-Fertilization in Commercial Space Station Ecosystems: A Catalyst for Innovation and Growth',
+    authors: ['Alessandro Paravano', 'Sofia Morrone', 'Elisa Negrisolo', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1297909',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Rethinking financial viability and profitability of new space business models and projects: the measurement of intangible value',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025',
+    doi: '10.52202/083099-0031',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1311043',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Challenges and Incentives in Developing Sustainable Commercial Space Projects: The Strategic Role of PPPs',
+    authors: ['Alessandro Paravano', 'Giulia Vaiani', 'Matilde Vietti', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1311039',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Traditional Space Project Planning No Longer Works: A New Value-Based Theoretical Perspective',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025 · pp. 419–428',
+    doi: '10.52202/083102-0024',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1311038',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/',
+    publishedVersionTitle: 'Small change or big bang? The shift from legacy to new space project planning',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2026.07.011',
+    publishedVersionLabel: 'Published version'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Investigating the influence of risk landscape dynamics on program governance: the Artemis case',
+    authors: ['Paolo Trucco', 'Alessandro Paravano', 'Giorgio Locatelli'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025 · pp. 288–301',
+    doi: '10.52202/083105-0027',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1311037',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'A comprehensive assessment of space R&D activities and their pervasiveness in other domains',
+    authors: ['Riccardo Bernocchi', 'Alessandro Paravano', 'Gloria Puliga', 'R. Manzini', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025 · pp. 119–133',
+    doi: '10.52202/083101-0012',
+    recordUrl: 'https://arl.liuc.it/esploro/outputs/conferenceProceeding/A-comprehensive-assessment-of-space-RD/991001132529605126',
+    recordLabel: 'Record',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Why space companies should understand more about platform models',
+    authors: ['Riccardo Bernocchi', 'Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Sydney, Australia · 29 September–3 October 2025 · pp. 1–9',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1310265',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2025/'
+  },
+  {
+    type: 'conference',
+    year: 2025,
+    title: 'Unveiling the influence of emerging project ecology on megaproject ecosystems: a network analysis of the commercial space station case',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'European Academy of Management Conference (EURAM)',
+    details: 'Florence, Italy · 23–25 June 2025',
+    conferenceUrl: 'https://conferences.euram.academy/2025conference/'
+  },
+
+  // 2024
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'Towards a net-zero infrastructure: proposal for an enhanced LCA model for power plants',
+    authors: ['Giorgio Locatelli', 'Alessandro Paravano', 'Alessandra Neri', 'Enrico Cagno'],
+    venue: '9th International Conference on Renewable Energy and Conservation (ICREC)',
+    details: 'Rome, Italy · 22–24 November 2024',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1310294',
+    publishedVersionTitle: 'Towards a Net-Zero Infrastructure: Proposal for an Enhanced LCA Model for Power Plants',
+    publishedVersionUrl: 'https://doi.org/10.1007/978-3-031-98997-1_56',
+    publishedVersionLabel: 'Published chapter'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'Towards a net-zero infrastructure: a CO₂-based taxonomy for power plants',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Alessandra Neri', 'Enrico Cagno'],
+    venue: '9th International Conference on Renewable Energy and Conservation (ICREC)',
+    details: 'Rome, Italy · 22–24 November 2024',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1310292',
+    publishedVersionTitle: 'Towards a Net-Zero Infrastructure: A CO₂-Based Taxonomy for Power Plants',
+    publishedVersionUrl: 'https://doi.org/10.1007/978-3-031-98997-1_54',
+    publishedVersionLabel: 'Published chapter'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'How are Space Economy trends reshaping the risk landscape of the space industry? A taxonomy and framework',
+    authors: ['Paolo Trucco', 'Alessandro Paravano', 'Giorgio Locatelli'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Milan, Italy · 14–18 October 2024 · pp. 418–427',
+    doi: '10.52202/078383-0033',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1279185',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2024/',
+    publishedVersionTitle: 'Framing the dynamics of risk landscape amidst space economy trends',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2025.06.067',
+    publishedVersionLabel: 'Published version'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'Assessing the revenue streams of commercial space stations: a value network approach',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Milan, Italy · 14–18 October 2024 · pp. 113–129',
+    doi: '10.52202/078380-0015',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1279186',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/international-astronautical-congress-2024/',
+    publishedVersionTitle: 'Toward the LEO economy: A value assessment of commercial space stations for space and non-space users',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2024.11.060',
+    publishedVersionLabel: 'Related journal article'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'The influence of project governance on institutions: the COTS project developed by NASA and SpaceX',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'European Group for Organizational Studies (EGOS) Conference',
+    details: 'Milan, Italy · 4–6 July 2024',
+    recordUrl: 'https://www.egos.org/jart/prj3/egos/main.jart?content-id=1662944489704&rel=de&reserve-mode=active&show_prog=yes&subtheme_id=1666413921361',
+    recordLabel: 'Programme'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'Projects as interventions: Barriers and Drivers for Benefits Realisation',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'European Academy of Management Conference (EURAM)',
+    details: 'Bath, United Kingdom · 25–28 June 2024',
+    conferenceUrl: 'https://conferences.euram.academy/2024conference/',
+    publishedVersionTitle: 'Projects benefit realisation through sustainable innovation: drivers and challenges',
+    publishedVersionUrl: 'https://doi.org/10.1108/MD-08-2024-1751',
+    publishedVersionLabel: 'Related journal article'
+  },
+  {
+    type: 'conference',
+    year: 2024,
+    title: 'Assessing the value of the Copernicus users: a system architecture approach',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Danielle Wood', 'Paolo Trucco'],
+    venue: 'IEEE Aerospace Conference',
+    details: 'Montana, United States · 2–9 March 2024',
+    conferenceUrl: 'https://www.aeroconf.org/'
+  },
+
+  // 2023
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'Developing new Commercial Space Stations: How do potential users perceive their value?',
+    authors: ['Alessandro Paravano', 'Brendan Rosseau', 'Giorgio Locatelli', 'Mathew Weinzierl', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Baku, Azerbaijan · 2–6 October 2023',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1263442',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2023/',
+    publishedVersionTitle: 'Toward the LEO economy: A value assessment of commercial space stations for space and non-space users',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2024.11.060',
+    publishedVersionLabel: 'Related journal article'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'Strengthening the role of the space sector as a major driver of sustainable development: an investigation of the ESA Business Application programme',
+    authors: ['Alessandro Paravano', 'Marco Patrizi', 'Emanuele Razzano', 'Francesco Feliciani', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Baku, Azerbaijan · 2–6 October 2023',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1263443',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2023/',
+    publishedVersionTitle: 'The impact of the New Space Economy on sustainability: an overview',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2024.05.046',
+    publishedVersionLabel: 'Published version'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'Eliciting the value of innovation intermediaries in the Copernicus programme ecology: an empirical investigation',
+    authors: ['Alessandro Paravano', 'Alessandro Calzi', 'Pietro Mirri', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Baku, Azerbaijan · 2–6 October 2023',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1263790',
+    recordUrl: 'https://iafastro.directory/iac/paper/id/76711/abstract-pdf/IAC-23%2CE6%2C3%2C6%2Cx76711.brief.pdf',
+    recordLabel: 'Abstract',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2023/'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'Unfolding space program governance models driving the transition towards the New Space',
+    authors: ['Valentina Zancan', 'Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Baku, Azerbaijan · 2–6 October 2023 · pp. 381–392',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1263440',
+    recordUrl: 'https://dl.iafastro.directory/event/IAC-2023/paper/79727/',
+    recordLabel: 'IAF record',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2023/',
+    publishedVersionTitle: 'Evolving governance in the space sector: From Legacy Space to New Space models',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2024.09.005',
+    publishedVersionLabel: 'Published version'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'How are Space Economy trends reshaping the risk landscape of the space industry? A taxonomy and framework',
+    authors: ['Paolo Trucco', 'Alessandro Paravano', 'Stefano Nitti', 'E. Messina', 'M. Luinaud', 'Giorgio Locatelli'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Baku, Azerbaijan · 2–6 October 2023',
+    recordUrl: 'https://www.iafastro.org/assets/files/publications/iac-publications/2023/IAC2023_FP_Technical-Programme-Constantin-WEB.pdf',
+    recordLabel: 'Programme',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2023/',
+    publishedVersionTitle: 'Framing the dynamics of risk landscape amidst space economy trends',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2025.06.067',
+    publishedVersionLabel: 'Later journal article'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'How does programme governance promote the common good? The Artemis Space Programme case',
+    authors: ['Alessandro Paravano', 'Valentina Zancan', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'British Academy of Management Conference (BAM)',
+    details: 'Brighton, United Kingdom · 5–6 September 2023',
+    conferenceUrl: 'https://www.bam.ac.uk/'
+  },
+  {
+    type: 'conference',
+    year: 2023,
+    title: 'Tackling Climate Change through commercial satellite-based projects: a taxonomy of the ESA Business Applications Program',
+    authors: ['Alessandro Paravano', 'Fabio Saracino', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'IAF Global Space Conference on Climate Change (GLOC)',
+    details: 'Oslo, Norway · 23–25 May 2023 · pp. 659–673',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1279188'
+  },
+
+  // 2022
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'What is value in the New Space Economy? Unveiling its value dimensions',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Paris, France · 18–22 September 2022',
+    repositoryUrl: 'https://hdl.handle.net/11311/1257455',
+    recordUrl: 'https://iafastro.directory/iac/archive/browse/IAC-22/E6/3/70011/',
+    recordLabel: 'IAF record',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2022/',
+    publishedVersionTitle: 'What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions',
+    publishedVersionUrl: 'https://doi.org/10.1016/j.actaastro.2023.05.001',
+    publishedVersionLabel: 'Published version'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Assessing the Value of the Next Generation Space Projects: State-of-the-art and new perspectives',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Paris, France · 18–22 September 2022 · pp. 197–209',
+    repositoryUrl: 'https://re.public.polimi.it/handle/11311/1257454',
+    recordUrl: 'https://iafastro.directory/iac/paper/id/70013/abstract-pdf/IAC-22%2CE3%2C3%2C1%2Cx70013.brief.pdf',
+    recordLabel: 'Abstract',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2022/'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Commercial space: Challenges and opportunities for Project Management',
+    authors: ['Alessandro Paravano', 'E. Godard', 'G. Verhulst', 'P. Makurunje', 'S. Yazdani'],
+    venue: 'IAF Project/Programme Management Committee Young Professionals Workshop',
+    details: 'Paris, France · 17 September 2022',
+    recordUrl: 'https://www.iafastro.org/assets/files/static/ipmc/report/2022-ipmc-yp-ws-final-report.pdf',
+    recordLabel: 'Final report',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2022/associated-events/ipmc-workshop.html'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Addressing the Space Sector Skills Gap',
+    authors: ['Alessandro Paravano et al.'],
+    venue: 'Space Generation Congress (SGC) — Working Group 4',
+    details: 'Paris, France · 13–16 September 2022',
+    conferenceUrl: 'https://spacegeneration.org/sgc2022/working-groups'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Emerging trends on satellite-based applications in health: a synoptic view',
+    authors: ['Alessandro Paravano', 'M. Viterbo', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'International Astronautical Congress (IAC)',
+    details: 'Paris, France · 18–22 September 2022 · pp. 1–10',
+    repositoryUrl: 'https://hdl.handle.net/11311/1257452',
+    conferenceUrl: 'https://www.iafastro.org/events/iac/iac-2022/'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Hey look up! The benefits of satellite technologies to monitor and manage megaprojects',
+    authors: ['C. Mariani', 'Alessandro Paravano', 'C. Maione', 'M. Mancini', 'Paolo Trucco'],
+    venue: 'AIDI “Francesco Turco” Summer School',
+    details: 'Sanremo, Italy · 7–9 September 2022',
+    recordUrl: 'https://www.summerschool-aidi.it/images/papers/session_3_2022/ID_037.pdf',
+    recordLabel: 'Full paper'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'The interplay between the intermediary organization and the intermediation process: a value creation perspective',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'British Academy of Management Conference (BAM)',
+    details: 'Manchester, United Kingdom · 31 August–2 September 2022',
+    conferenceUrl: 'https://www.bam.ac.uk/'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Stakeholder engagement in project ecologies: practices and rationales',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'European Academy of Management Conference (EURAM)',
+    details: 'Winterthur, Switzerland · 15–17 June 2022',
+    recordUrl: 'https://conferences.euram.academy/2022conference/wp-content/uploads/sites/7/2022/10/EURAM-2022-Programme-for-Web.pdf',
+    recordLabel: 'Programme'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Emerging trends on satellite-based applications for health: a synoptic view on adoption drivers and benefits',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'ESA Living Planet Symposium',
+    details: 'Bonn, Germany · 23–27 May 2022',
+    conferenceUrl: 'https://lps22.esa.int/'
+  },
+  {
+    type: 'conference',
+    year: 2022,
+    title: 'Stakeholder engagement as a tool to foster capacity building in the New Space Economy',
+    authors: ['Alessandro Paravano', 'Giorgio Locatelli', 'Paolo Trucco'],
+    venue: 'ESA Living Planet Symposium',
+    details: 'Bonn, Germany · 23–27 May 2022',
+    recordUrl: 'https://www.researchgate.net/publication/364311887_Stakeholders_engagement_as_a_tool_to_foster_capacity_building_in_the_New_Space_Economy',
+    recordLabel: 'Record',
+    conferenceUrl: 'https://lps22.esa.int/'
+  },
+
+  // 2021
+  {
+    type: 'conference',
+    year: 2021,
+    title: 'Emerging trends on satellite-based applications in healthcare: a synoptic view',
+    authors: ['Alessandro Paravano', 'Paolo Trucco'],
+    venue: 'AmeriGEO Conference',
+    details: 'Online · 23–27 August 2021',
+    recordUrl: 'https://static1.squarespace.com/static/57d4a81b20099e97b489a499/t/61453fee125d785da35dc38e/1631928302717/AmeriGEO21_Health_FINAL.pdf',
+    recordLabel: 'Presentation'
+  },
+
   /* Editorials */
   {
     slug: 'industry-5-project-management-special-issue',
@@ -363,6 +822,7 @@ export const publications = [
 
 export const journalArticles = publications.filter((item) => item.type === 'journal');
 export const booksAndChapters = publications.filter((item) => ['chapter', 'report'].includes(item.type));
+export const conferencePapers = publications.filter((item) => item.type === 'conference');
 export const editorials = publications.filter((item) => item.type === 'editorial');
 
 export function getPublication(slug) {
