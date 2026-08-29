@@ -1,30 +1,258 @@
 ---
 import '../../styles/global.css';
+import { journalArticles, booksAndChapters, editorials } from './publications.js';
+
+const siteUrl = 'https://alessandroparavano.com';
+
+const byYear = (items) => {
+  const years = [...new Set(items.map((item) => item.year))].sort((a, b) => b - a);
+  return years.map((year) => ({
+    year,
+    items: items.filter((item) => item.year === year)
+  }));
+};
+
+const allForSchema = [...journalArticles, ...booksAndChapters, ...editorials];
+const publicationsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Publications | Alessandro Paravano',
+  url: `${siteUrl}/publications/`,
+  description: 'Peer-reviewed journal articles, book chapters, reports and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting.',
+  author: {
+    '@type': 'Person',
+    name: 'Alessandro Paravano',
+    url: `${siteUrl}/`,
+    identifier: 'https://orcid.org/0000-0002-6884-3712'
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: allForSchema.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': item.type === 'report' ? 'Report' : item.type === 'chapter' ? 'Chapter' : 'ScholarlyArticle',
+        name: item.title,
+        datePublished: String(item.year),
+        author: item.authors.filter((name) => !name.includes('et al.')).map((name) => ({ '@type': 'Person', name })),
+        isPartOf: { '@type': 'CreativeWork', name: item.venue },
+        identifier: item.doi ? `https://doi.org/${item.doi}` : undefined,
+        url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : `https://doi.org/${item.doi}`,
+        sameAs: [
+          item.doi ? `https://doi.org/${item.doi}` : null,
+          item.publisherUrl,
+          item.repositoryUrl
+        ].filter(Boolean)
+      }
+    }))
+  }
+};
+
+const renderYearGroups = byYear;
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Publications | Alessandro Paravano</title>
-  <meta name="description" content="Publications — Alessandro Paravano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications | Alessandro Paravano — Space Economy &amp; Complex Infrastructures</title>
+  <meta name="description" content="Peer-reviewed journal articles, book chapters, reports and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting." />
+  <link rel="canonical" href="https://alessandroparavano.com/publications/" />
+  <script type="application/ld+json" set:html={JSON.stringify(publicationsSchema)}></script>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a class="brand" href="/">Alessandro Paravano</a>
-    <div class="navlinks">
-      <a href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/about/">About</a>
-      <a href="/media-contact/">Media &amp; Contact</a>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Alessandro Paravano</a>
+      <div class="navlinks">
+        <a href="/research/">Research</a>
+        <a href="/publications/" aria-current="page">Publications</a>
+        <a href="/about/">About</a>
+        <a href="/media-contact/">Media &amp; Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="publications-page">
+    <section class="container publications-page-hero">
+      <h1>Publications</h1>
+      <p>Peer-reviewed research and selected scholarly contributions on the Space Economy, complex infrastructures, project value, ecosystems and ecologies, governance, and systems-oriented approaches to complex projects.</p>
+    </section>
+
+    <section class="container publications-page-section" aria-labelledby="journal-heading">
+      <div class="publications-section-heading">
+        <h2 id="journal-heading">Journal articles</h2>
+        <p>Peer-reviewed research articles, ordered from the most recent. Detailed research pages are being added progressively while DOI and repository links remain available from the complete list.</p>
+      </div>
+
+      <div class="publications-index">
+        {renderYearGroups(journalArticles).map((group) => (
+          <section class="publication-year-group" aria-labelledby={`journal-${group.year}`}>
+            <h3 id={`journal-${group.year}`} class="publication-year">{group.year}</h3>
+            <div class="publication-index-list">
+              {group.items.map((publication) => (
+                <article class="publication-index-item">
+                  <div class="publication-index-main">
+                    <h4>
+                      {publication.fullPage ? (
+                        <a href={`/publications/${publication.slug}/`}>{publication.title}</a>
+                      ) : publication.publisherUrl ? (
+                        <a href={publication.publisherUrl} target="_blank" rel="noopener">{publication.title}</a>
+                      ) : (
+                        <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.title}</a>
+                      )}
+                    </h4>
+                    <p class="publication-index-authors">
+                      {publication.authors.map((author, index) => (
+                        <>
+                          {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+                          {index < publication.authors.length - 1 ? ', ' : ''}
+                        </>
+                      ))}
+                    </p>
+                    <p class="publication-index-venue"><em>{publication.venue}</em> · {publication.details}</p>
+                  </div>
+                  <div class="publication-index-actions" aria-label={`Links for ${publication.title}`}>
+                    {publication.fullPage && <a class="publication-explore" href={`/publications/${publication.slug}/`}>Explore research →</a>}
+                    <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">DOI</a>
+                    {publication.publisherUrl && publication.publisherUrl !== `https://doi.org/${publication.doi}` && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
+                    {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="container publications-page-section" aria-labelledby="books-heading">
+      <div class="publications-section-heading">
+        <h2 id="books-heading">Books, chapters &amp; reports</h2>
+        <p>Scholarly chapters and institutional publications that extend the research into space-economy, infrastructure, sustainability, governance and energy contexts.</p>
+      </div>
+
+      <div class="publications-index">
+        {renderYearGroups(booksAndChapters).map((group) => (
+          <section class="publication-year-group" aria-labelledby={`books-${group.year}`}>
+            <h3 id={`books-${group.year}`} class="publication-year">{group.year}</h3>
+            <div class="publication-index-list">
+              {group.items.map((publication) => (
+                <article class="publication-index-item">
+                  <div class="publication-index-main">
+                    <h4>
+                      {publication.fullPage ? (
+                        <a href={`/publications/${publication.slug}/`}>{publication.title}</a>
+                      ) : publication.publisherUrl ? (
+                        <a href={publication.publisherUrl} target="_blank" rel="noopener">{publication.title}</a>
+                      ) : (
+                        <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.title}</a>
+                      )}
+                    </h4>
+                    <p class="publication-index-authors">
+                      {publication.authors.map((author, index) => (
+                        <>
+                          {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+                          {index < publication.authors.length - 1 ? ', ' : ''}
+                        </>
+                      ))}
+                    </p>
+                    <p class="publication-index-venue"><em>{publication.venue}</em> · {publication.details}</p>
+                  </div>
+                  <div class="publication-index-actions" aria-label={`Links for ${publication.title}`}>
+                    {publication.fullPage && <a class="publication-explore" href={`/publications/${publication.slug}/`}>Explore research →</a>}
+                    <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">DOI</a>
+                    {publication.publisherUrl && publication.publisherUrl !== `https://doi.org/${publication.doi}` && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
+                    {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="container publications-page-section publications-editorials" aria-labelledby="editorial-heading">
+      <div class="publications-section-heading">
+        <h2 id="editorial-heading">Editorials</h2>
+        <p>Editorial and field-building contributions are listed separately from research articles.</p>
+      </div>
+
+      <div class="publication-index-list publication-index-list--single">
+        {editorials.map((publication) => (
+          <article class="publication-index-item">
+            <div class="publication-index-main">
+              <h4><a href={publication.publisherUrl || `https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.title}</a></h4>
+              <p class="publication-index-authors">
+                {publication.authors.map((author, index) => (
+                  <>
+                    {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+                    {index < publication.authors.length - 1 ? ', ' : ''}
+                  </>
+                ))}
+              </p>
+              <p class="publication-index-venue"><em>{publication.venue}</em> · {publication.details}</p>
+            </div>
+            <div class="publication-index-actions">
+              <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">DOI</a>
+              {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
+              {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-identity">
+        <strong>Alessandro Paravano</strong>
+        <span>Assistant Professor, Politecnico di Milano</span>
+        <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+      </div>
+      <div class="footer-explore">
+        <span class="footer-label">Explore</span>
+        <div><a href="/">Home</a> · <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+      </div>
     </div>
-  </nav>
-</header>
-<main class="container">
-  <h1>Publications</h1>
-  <p class="lede">This page is intentionally minimal for the first deployment. We will add the final content and structure step by step.</p>
-</main>
-<footer><div class="container">© Alessandro Paravano</div></footer>
+
+    <div class="container footer-profiles">
+      <span class="footer-label profiles-label">Profiles</span>
+      <div class="profiles-grid">
+        <div>
+          <h3>Institutional</h3>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
+        </div>
+        <div>
+          <h3>Academic profiles</h3>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586" target="_blank" rel="me noopener">Semantic Scholar</a>
+          <a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a>
+          <a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a>
+        </div>
+        <div class="profiles-continuation">
+          <h3>Academic profiles continued</h3>
+          <a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a>
+          <a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a>
+          <a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a>
+          <a href="https://researchid.co/alessandroparavano" target="_blank" rel="me noopener">ResearchID.co</a>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
+  </footer>
 </body>
 </html>

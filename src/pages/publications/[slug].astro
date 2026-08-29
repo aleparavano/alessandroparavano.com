@@ -1,0 +1,276 @@
+---
+import '../../styles/global.css';
+import { publications, getDetailedPublications } from './publications.js';
+
+export function getStaticPaths() {
+  return getDetailedPublications().map((publication) => ({
+    params: { slug: publication.slug },
+    props: { publication }
+  }));
+}
+
+const { publication } = Astro.props;
+const siteUrl = 'https://alessandroparavano.com';
+const canonicalUrl = `${siteUrl}/publications/${publication.slug}/`;
+const doiUrl = `https://doi.org/${publication.doi}`;
+const relatedPublications = (publication.related || [])
+  .map((slug) => publications.find((item) => item.slug === slug))
+  .filter(Boolean);
+
+const scholarlySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: publication.title,
+  name: publication.title,
+  url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
+  datePublished: publication.publicationDate || String(publication.year),
+  author: publication.authors.map((name) => ({
+    '@type': 'Person',
+    name,
+    ...(name === 'Alessandro Paravano' ? {
+      url: `${siteUrl}/`,
+      sameAs: [
+        'https://orcid.org/0000-0002-6884-3712',
+        'https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ',
+        'https://re.public.polimi.it/cris/rp/rp111035'
+      ]
+    } : {})
+  })),
+  isPartOf: {
+    '@type': 'Periodical',
+    name: publication.venue,
+    issn: publication.issn || undefined
+  },
+  volumeNumber: publication.volume || undefined,
+  pageStart: publication.firstPage || undefined,
+  pageEnd: publication.lastPage || undefined,
+  publisher: publication.publisherName ? { '@type': 'Organization', name: publication.publisherName } : undefined,
+  identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: publication.doi },
+  keywords: [...(publication.officialKeywords || []), ...(publication.themes || [])],
+  about: (publication.themes || []).map((name) => ({ '@type': 'Thing', name })),
+  abstract: publication.about,
+  isAccessibleForFree: publication.repositoryLabel === 'Open access',
+  sameAs: [doiUrl, publication.publisherUrl, publication.repositoryUrl].filter(Boolean),
+  isRelatedTo: relatedPublications.map((item) => ({
+    '@type': 'ScholarlyArticle',
+    name: item.title,
+    url: item.fullPage ? `${siteUrl}/publications/${item.slug}/` : `https://doi.org/${item.doi}`
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Publications', item: `${siteUrl}/publications/` },
+    { '@type': 'ListItem', position: 3, name: publication.title, item: canonicalUrl }
+  ]
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{publication.title} | Alessandro Paravano</title>
+  <meta name="description" content={publication.takeaway || publication.about} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <meta name="citation_title" content={publication.title} />
+  {publication.authors.map((author) => <meta name="citation_author" content={author} />)}
+  <meta name="citation_publication_date" content={publication.publicationDate || String(publication.year)} />
+  <meta name="citation_journal_title" content={publication.venue} />
+  {publication.volume && <meta name="citation_volume" content={publication.volume} />}
+  {publication.firstPage && <meta name="citation_firstpage" content={publication.firstPage} />}
+  {publication.lastPage && <meta name="citation_lastpage" content={publication.lastPage} />}
+  <meta name="citation_doi" content={publication.doi} />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={publication.title} />
+  <meta property="og:description" content={publication.takeaway || publication.about} />
+  <meta property="og:url" content={canonicalUrl} />
+
+  <script type="application/ld+json" set:html={JSON.stringify(scholarlySchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Alessandro Paravano</a>
+      <div class="navlinks">
+        <a href="/research/">Research</a>
+        <a href="/publications/" aria-current="page">Publications</a>
+        <a href="/about/">About</a>
+        <a href="/media-contact/">Media &amp; Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="publication-detail-page">
+    <section class="container publication-detail-hero">
+      <a class="publication-back" href="/publications/">← All publications</a>
+      <p class="publication-type-label">Journal article</p>
+      <h1>{publication.title}</h1>
+      <p class="publication-detail-authors">
+        {publication.authors.map((author, index) => (
+          <>
+            {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+            {index < publication.authors.length - 1 ? ', ' : ''}
+          </>
+        ))}
+      </p>
+      <p class="publication-detail-venue"><em>{publication.venue}</em> · {publication.details}</p>
+      <div class="publication-detail-links" aria-label="Publication links">
+        <a href={doiUrl} target="_blank" rel="noopener">DOI</a>
+        {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
+        {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+      </div>
+      <p class="publication-takeaway">{publication.takeaway}</p>
+    </section>
+
+    <section class="container publication-detail-section publication-about-section" aria-labelledby="about-research-heading">
+      <div class="publication-detail-heading">
+        <h2 id="about-research-heading">About this research</h2>
+      </div>
+      <div class="publication-detail-content">
+        <p>{publication.about}</p>
+      </div>
+    </section>
+
+    <section class="container publication-detail-section" aria-labelledby="research-question-heading">
+      <div class="publication-detail-heading">
+        <h2 id="research-question-heading">Research question</h2>
+      </div>
+      <div class="publication-detail-content">
+        <ol class="research-question-list">
+          {publication.researchQuestions.map((question) => <li>{question}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="container publication-detail-section" aria-labelledby="approach-heading">
+      <div class="publication-detail-heading">
+        <h2 id="approach-heading">Approach</h2>
+      </div>
+      <div class="publication-detail-content">
+        <p>{publication.approach}</p>
+      </div>
+    </section>
+
+    <section class="container publication-detail-section" aria-labelledby="findings-heading">
+      <div class="publication-detail-heading">
+        <h2 id="findings-heading">Key findings</h2>
+      </div>
+      <div class="publication-detail-content">
+        <ol class="key-findings-list">
+          {publication.findings.map((finding) => <li>{finding}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="container publication-detail-section" aria-labelledby="why-matters-heading">
+      <div class="publication-detail-heading">
+        <h2 id="why-matters-heading">Why it matters</h2>
+      </div>
+      <div class="publication-detail-content">
+        <p>{publication.whyItMatters}</p>
+      </div>
+    </section>
+
+    <section class="container publication-detail-section" aria-labelledby="themes-heading">
+      <div class="publication-detail-heading">
+        <h2 id="themes-heading">Research themes</h2>
+      </div>
+      <div class="publication-detail-content">
+        <div class="publication-theme-list">
+          {publication.themes.map((theme) => <span>{theme}</span>)}
+        </div>
+      </div>
+    </section>
+
+    {relatedPublications.length > 0 && (
+      <section class="container publication-detail-section" aria-labelledby="related-heading">
+        <div class="publication-detail-heading">
+          <h2 id="related-heading">Related research</h2>
+        </div>
+        <div class="publication-detail-content related-publications-list">
+          {relatedPublications.map((item) => (
+            <article class="related-publication">
+              <h3>
+                <a href={item.fullPage ? `/publications/${item.slug}/` : `https://doi.org/${item.doi}`} target={item.fullPage ? undefined : '_blank'} rel={item.fullPage ? undefined : 'noopener'}>{item.title}</a>
+              </h3>
+              <p>{item.venue} · {item.year}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="container publication-detail-section publication-citation-section" aria-labelledby="citation-heading">
+      <div class="publication-detail-heading">
+        <h2 id="citation-heading">Citation</h2>
+      </div>
+      <div class="publication-detail-content">
+        <p class="publication-citation">{publication.citation}</p>
+        <div class="publication-detail-links publication-detail-links--bottom">
+          <a href={doiUrl} target="_blank" rel="noopener">DOI</a>
+          {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher</a>}
+          {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'}</a>}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-identity">
+        <strong>Alessandro Paravano</strong>
+        <span>Assistant Professor, Politecnico di Milano</span>
+        <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+      </div>
+      <div class="footer-explore">
+        <span class="footer-label">Explore</span>
+        <div><a href="/">Home</a> · <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+      </div>
+    </div>
+
+    <div class="container footer-profiles">
+      <span class="footer-label profiles-label">Profiles</span>
+      <div class="profiles-grid">
+        <div>
+          <h3>Institutional</h3>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
+        </div>
+        <div>
+          <h3>Academic profiles</h3>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://www.semanticscholar.org/author/Alessandro-Paravano/2216457586" target="_blank" rel="me noopener">Semantic Scholar</a>
+          <a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a>
+          <a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a>
+        </div>
+        <div class="profiles-continuation">
+          <h3>Academic profiles continued</h3>
+          <a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a>
+          <a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a>
+          <a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a>
+          <a href="https://researchid.co/alessandroparavano" target="_blank" rel="me noopener">ResearchID.co</a>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
+  </footer>
+</body>
+</html>
