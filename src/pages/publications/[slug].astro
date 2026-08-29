@@ -25,9 +25,9 @@ const schemaType = publication.schemaType || 'ScholarlyArticle';
 const relatedPublications = (publication.related || [])
   .map((slug) => publications.find((item) => item.slug === slug))
   .filter(Boolean);
-const findings = (publication.findings || []).map((finding, index) =>
+const findings = (publication.findings || []).map((finding) =>
   typeof finding === 'string'
-    ? { title: `Finding ${index + 1}`, text: finding }
+    ? { title: null, text: finding }
     : finding
 );
 const whyItMatters = Array.isArray(publication.whyItMatters)
@@ -136,23 +136,19 @@ const breadcrumbSchema = {
     <section class="container publication-detail-hero">
       <a class="publication-back" href="/publications/">← All publications</a>
 
-      <div class="publication-hero-grid">
-        <div class="publication-hero-main">
-          <p class="publication-type-label">{typeLabel} <span aria-hidden="true">·</span> {publication.year}</p>
-          <h1>{publication.title}</h1>
-          <p class="publication-detail-authors">
-            {publication.authors.map((author, index) => (
-              <>
-                {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
-                {index < publication.authors.length - 1 ? ', ' : ''}
-              </>
-            ))}
-          </p>
-          <p class="publication-detail-venue"><em>{publication.venue}</em>{publication.details ? <> <span aria-hidden="true">·</span> {publication.details}</> : ''}</p>
-        </div>
-
-        <div class="publication-source-panel" aria-label="Publication links">
-          <span class="publication-source-label">Access</span>
+      <div class="publication-hero-main">
+        <p class="publication-type-label">{typeLabel} <span aria-hidden="true">·</span> {publication.year}</p>
+        <h1>{publication.title}</h1>
+        <p class="publication-detail-authors">
+          {publication.authors.map((author, index) => (
+            <>
+              {author === 'Alessandro Paravano' ? <strong>{author}</strong> : author}
+              {index < publication.authors.length - 1 ? ', ' : ''}
+            </>
+          ))}
+        </p>
+        <p class="publication-detail-venue"><em>{publication.venue}</em>{publication.details ? <> <span aria-hidden="true">·</span> {publication.details}</> : ''}</p>
+        <div class="publication-access-links" aria-label="Publication links">
           {doiUrl && <a href={doiUrl} target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>}
           {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher <span aria-hidden="true">↗</span></a>}
           {publication.repositoryUrl && <a href={publication.repositoryUrl} target="_blank" rel="noopener">{publication.repositoryLabel || 'Repository'} <span aria-hidden="true">↗</span></a>}
@@ -169,7 +165,6 @@ const breadcrumbSchema = {
 
     <section class="container publication-detail-section" aria-labelledby="about-research-heading">
       <div class="publication-detail-heading">
-        <p class="publication-section-number">01</p>
         <h2 id="about-research-heading">About this research</h2>
       </div>
       <div class="publication-detail-content publication-prose">
@@ -180,7 +175,6 @@ const breadcrumbSchema = {
     {publication.researchQuestions?.length > 0 && (
       <section class="container publication-detail-section" aria-labelledby="research-question-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">02</p>
           <h2 id="research-question-heading">Research questions</h2>
         </div>
         <div class="publication-detail-content research-question-grid">
@@ -197,7 +191,6 @@ const breadcrumbSchema = {
     {publication.approach && (
       <section class="container publication-detail-section" aria-labelledby="approach-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">03</p>
           <h2 id="approach-heading">Approach</h2>
         </div>
         <div class="publication-detail-content publication-prose">
@@ -219,17 +212,13 @@ const breadcrumbSchema = {
     {findings.length > 0 && (
       <section class="container publication-detail-section" aria-labelledby="findings-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">04</p>
           <h2 id="findings-heading">Key findings</h2>
         </div>
         <div class="publication-detail-content key-findings-editorial">
-          {findings.map((finding, index) => (
+          {findings.map((finding) => (
             <article class="key-finding-item">
-              <span class="key-finding-number">0{index + 1}</span>
-              <div>
-                <h3>{finding.title}</h3>
-                <p>{finding.text}</p>
-              </div>
+              {finding.title && <h3>{finding.title}</h3>}
+              <p>{finding.text}</p>
             </article>
           ))}
         </div>
@@ -239,7 +228,6 @@ const breadcrumbSchema = {
     {whyItMatters.length > 0 && (
       <section class="container publication-detail-section" aria-labelledby="why-matters-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">05</p>
           <h2 id="why-matters-heading">Why it matters</h2>
         </div>
         <div class="publication-detail-content publication-prose publication-prose-stack">
@@ -251,7 +239,6 @@ const breadcrumbSchema = {
     {publication.themes?.length > 0 && (
       <section class="container publication-detail-section publication-themes-section" aria-labelledby="themes-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">06</p>
           <h2 id="themes-heading">Research themes</h2>
         </div>
         <div class="publication-detail-content">
@@ -265,7 +252,6 @@ const breadcrumbSchema = {
     {relatedPublications.length > 0 && (
       <section class="container publication-detail-section" aria-labelledby="related-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">07</p>
           <h2 id="related-heading">Related research</h2>
         </div>
         <div class="publication-detail-content related-publications-list">
@@ -290,11 +276,17 @@ const breadcrumbSchema = {
     {publication.citation && (
       <section class="container publication-detail-section publication-citation-section" aria-labelledby="citation-heading">
         <div class="publication-detail-heading">
-          <p class="publication-section-number">08</p>
           <h2 id="citation-heading">Citation</h2>
         </div>
         <div class="publication-detail-content">
           <p class="publication-citation">{publication.citation}</p>
+          <div class="citation-export" aria-label="Download citation">
+            <span class="citation-export-label">Export citation</span>
+            <div class="citation-export-actions">
+              <a class="citation-download-button" href={`/publications/${publication.slug}.ris`} download>RIS <span>Zotero, EndNote</span></a>
+              <a class="citation-download-button citation-download-button--secondary" href={`/publications/${publication.slug}.bib`} download>BibTeX <span>LaTeX, reference managers</span></a>
+            </div>
+          </div>
           <div class="publication-detail-links publication-detail-links--bottom">
             {doiUrl && <a href={doiUrl} target="_blank" rel="noopener">DOI <span aria-hidden="true">↗</span></a>}
             {publication.publisherUrl && <a href={publication.publisherUrl} target="_blank" rel="noopener">Publisher <span aria-hidden="true">↗</span></a>}
