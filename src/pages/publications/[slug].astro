@@ -77,7 +77,7 @@ const scholarlySchema = {
   spatialCoverage: publication.spatialCoverage ? { '@type': 'Place', name: publication.spatialCoverage } : undefined,
   inLanguage: publication.language || 'en',
   genre: publication.genre || typeLabel,
-  isAccessibleForFree: publication.repositoryLabel === 'Open access',
+  isAccessibleForFree: publication.repositoryLabel === 'Open access' ? true : undefined,
   sameAs: [doiUrl, publication.publisherUrl, publication.repositoryUrl].filter(Boolean),
   isRelatedTo: relatedPublications.map((item) => ({
     '@type': 'ScholarlyArticle',
@@ -129,7 +129,8 @@ const breadcrumbSchema = {
   <meta name="citation_title" content={publication.title} />
   {publication.authors.map((author) => <meta name="citation_author" content={author} />)}
   <meta name="citation_publication_date" content={publication.publicationDate || String(publication.year)} />
-  <meta name="citation_journal_title" content={publication.venue} />
+  {(publication.type === 'journal' || publication.type === 'editorial') && <meta name="citation_journal_title" content={publication.venue} />}
+  {publication.type === 'chapter' && <meta name="citation_book_title" content={publication.venue} />}
   {publication.issn && <meta name="citation_issn" content={publication.issn} />}
   {publication.volume && <meta name="citation_volume" content={publication.volume} />}
   {publication.firstPage && <meta name="citation_firstpage" content={publication.firstPage} />}
@@ -221,7 +222,7 @@ const breadcrumbSchema = {
     {publication.approach && (
       <section class="container publication-detail-section" aria-labelledby="approach-heading">
         <div class="publication-detail-heading">
-          <h2 id="approach-heading">Approach</h2>
+          <h2 id="approach-heading">Method</h2>
         </div>
         <div class="publication-detail-content publication-prose">
           <p>{publication.approach}</p>

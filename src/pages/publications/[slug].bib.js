@@ -21,8 +21,13 @@ const escapeBib = (value = '') => String(value)
 
 const citationKey = (publication) => {
   const firstAuthor = publication.authors?.[0]?.trim().split(/\s+/).pop() || 'Paravano';
-  const word = publication.title.match(/[A-Za-z0-9]+/)?.[0] || 'Publication';
-  return `${firstAuthor}${publication.year}${word}`.replace(/[^A-Za-z0-9]/g, '');
+  const slugKey = (publication.slug || 'publication')
+    .split('-')
+    .filter(Boolean)
+    .slice(0, 4)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('');
+  return `${firstAuthor}${publication.year}${slugKey}`.replace(/[^A-Za-z0-9]/g, '');
 };
 
 export function GET({ props }) {
