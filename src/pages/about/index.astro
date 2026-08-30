@@ -23,37 +23,35 @@ const awards = [
   { year: '2017-2019', title: 'High-merit student scholarship', org: 'Politecnico di Milano' }
 ];
 
-const journalRoles = [
-  { period: 'Current', role: 'Social Media Editor and Editorial Review Board Member', journal: 'Project Management Journal', publisher: 'Sage / Project Management Institute', href: 'https://journals.sagepub.com/home/pmx' },
-  { period: '2025-present', role: 'Reviewer', journal: 'New Space', publisher: 'Sage', href: 'https://journals.sagepub.com/home/nspa' },
-  { period: 'Current', role: 'Reviewer', journal: 'Technological Forecasting and Social Change', publisher: 'Elsevier', href: 'https://www.sciencedirect.com/journal/technological-forecasting-and-social-change' },
-  { period: '2024-present', role: 'Reviewer', journal: 'Acta Astronautica', publisher: 'Elsevier', href: 'https://www.sciencedirect.com/journal/acta-astronautica' },
-  { period: '2024-present', role: 'Reviewer', journal: 'Sustainable Development', publisher: 'Wiley', href: 'https://onlinelibrary.wiley.com/journal/10991719' },
-  { period: '2023-present', role: 'Reviewer', journal: 'International Journal of Managing Projects in Business', publisher: 'Emerald', href: 'https://www.emerald.com/ijmpb' }
-];
-
-const conferenceRoles = [
-  { period: '2026', role: 'Organizer', title: 'EURAM Symposium: Project Ecosystems: Theorising Emergent Value in Temporary Organizations', meta: 'EURAM Annual Conference, Kristiansand, Norway', href: 'https://conferences.euram.academy/2026conference/symposia/' },
-  { period: '2026', role: 'Organizer', title: 'XXXI AIDI Francesco Turco Summer School', meta: 'Lecco, Italy, 8-11 September 2026', href: 'https://aidi-polimi.com/' },
-  { period: '2024', role: 'Session Chair', title: '9th International Conference on Renewable Energy and Conservation (ICREC 2024)', meta: 'Rome, Italy, 22-24 November 2024', href: 'https://www.icrec.org/2024.html' },
-  { period: '2022-2026', role: 'Reviewer', title: 'European Academy of Management Conference (EURAM)', meta: 'Annual conference peer review', href: 'https://euram.academy/' },
-  { period: '2024', role: 'Reviewer', title: 'European Group for Organizational Studies Conference (EGOS)', meta: 'Milan, Italy, 4-6 July 2024', href: 'https://egos.org/2024_milan/general_theme' },
-  { period: '2023', role: 'Reviewer', title: 'British Academy of Management Conference (BAM)', meta: 'Brighton, United Kingdom, 5-6 September 2023', href: 'https://www.bam.ac.uk/events-landing/bam2023-conference.html' },
-  { period: '2022, 2026', role: 'Reviewer', title: 'AIDI Francesco Turco Summer School', meta: 'Industrial Systems Engineering', href: 'https://aidi-polimi.com/' }
-];
-
-const associations = [
-  { period: '2026', role: 'External consultant on Space Economy', org: 'Organizzazione Internazionale Italo-Latino Americana (IILA)', href: 'https://iila.org/it/concluso-il-corso-space-economy-e-imprenditorialita-del-progetto-asi-iila-space-education-and-capacity-building/' },
-  { period: 'Current', role: 'External Expert', org: 'European Union Agency for the Space Programme (EUSPA)', href: 'https://www.euspa.europa.eu/opportunities/procurement-grants/call-experts' },
-  { period: '2025-present', role: 'Member', org: 'Academy of Management (AOM)', href: 'https://www.aom.org/' },
-  { period: '2025-present', role: 'ISAM Economy Task Force co-leader', org: 'International Astronautical Federation (IAF)', href: 'https://www.iafastro.org/' },
-  { period: '2025', role: 'External Reviewer', org: 'Icelandic Research Fund', href: 'https://island.is/en/p/icelandic-research-fund' },
-  { period: '2023-present', role: 'Member, Space Economy Committee', org: 'International Astronautical Federation (IAF)', href: 'https://www.iafastro.org/about/iaf-committees/technical-committees/space-economy-committee.html' },
-  { period: '2022-2023', role: 'Young Professionals National Delegate, International Project/Programme Management Committee', org: 'International Astronautical Federation (IAF)' },
-  { period: '2022-present', role: 'Member', org: 'European Academy of Management (EURAM)', href: 'https://euram.academy/' },
-  { period: '2021-present', role: 'Member', org: 'Italian Copernicus Users Forum' },
-  { period: '2021-present', role: 'Member', org: 'Space Generation Advisory Council (SGAC)', href: 'https://spacegeneration.org/' },
-  { period: '2021-present', role: 'Member', org: 'Nova Talent', href: 'https://www.novatalent.com/' }
+const selectedService = [
+  {
+    role: 'Editorial service',
+    title: 'Social Media Editor and Editorial Review Board Member',
+    org: 'Project Management Journal',
+    detail: 'Sage / Project Management Institute',
+    href: 'https://journals.sagepub.com/home/pmx'
+  },
+  {
+    role: 'Scientific leadership',
+    title: 'Space Economy Committee Member and ISAM Economy Task Force Co-leader',
+    org: 'International Astronautical Federation (IAF)',
+    detail: 'Space Economy and in-space manufacturing',
+    href: 'https://www.iafastro.org/about/iaf-committees/technical-committees/space-economy-committee.html'
+  },
+  {
+    role: 'External expert',
+    title: 'External Expert',
+    org: 'European Union Agency for the Space Programme (EUSPA)',
+    detail: 'EU Space Programme',
+    href: 'https://www.euspa.europa.eu/opportunities/procurement-grants/call-experts'
+  },
+  {
+    role: 'External consulting',
+    title: 'External Consultant on Space Economy',
+    org: 'Organizzazione Internazionale Italo-Latino Americana (IILA)',
+    detail: 'Space Economy education and capacity building',
+    href: 'https://iila.org/it/concluso-il-corso-space-economy-e-imprenditorialita-del-progetto-asi-iila-space-education-and-capacity-building/'
+  }
 ];
 
 const personSchema = {
@@ -78,10 +76,7 @@ const personSchema = {
     { '@type': 'CollegeOrUniversity', name: 'Delft University of Technology', url: 'https://www.tudelft.nl/en/' }
   ],
   memberOf: [
-    { '@type': 'Organization', name: 'International Astronautical Federation Space Economy Committee', url: 'https://www.iafastro.org/about/iaf-committees/technical-committees/space-economy-committee.html' },
-    { '@type': 'Organization', name: 'European Academy of Management', url: 'https://euram.academy/' },
-    { '@type': 'Organization', name: 'Academy of Management', url: 'https://www.aom.org/' },
-    { '@type': 'Organization', name: 'Space Generation Advisory Council', url: 'https://spacegeneration.org/' }
+    { '@type': 'Organization', name: 'International Astronautical Federation Space Economy Committee', url: 'https://www.iafastro.org/about/iaf-committees/technical-committees/space-economy-committee.html' }
   ],
   knowsAbout: [
     'Space Economy', 'New Space Economy', 'Complex infrastructures', 'Earth Observation', 'GNSS', 'PNT',
@@ -112,7 +107,7 @@ const personSchema = {
 const profilePageSchema = {
   '@context': 'https://schema.org', '@type': 'ProfilePage', '@id': `${canonicalUrl}#profile-page`,
   name: 'Academic profile | Alessandro Paravano', url: canonicalUrl,
-  description: 'Academic profile of Alessandro Paravano, Assistant Professor at Politecnico di Milano and Space Economy researcher, including current positions, teaching, awards, editorial service, conferences and scientific associations.',
+  description: 'Academic profile of Alessandro Paravano, Assistant Professor at Politecnico di Milano and Space Economy researcher, including current positions, teaching, honors and awards, and selected academic service and affiliations.',
   mainEntity: { '@id': personId }
 };
 const breadcrumbSchema = {
@@ -128,7 +123,7 @@ const breadcrumbSchema = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Alessandro Paravano | Academic Profile & Space Economy Expertise</title>
-  <meta name="description" content="Academic profile of Alessandro Paravano, Assistant Professor at Politecnico di Milano and Space Economy researcher: positions, teaching, awards, journal service, conferences and scientific associations." />
+  <meta name="description" content="Academic profile of Alessandro Paravano, Assistant Professor at Politecnico di Milano and Space Economy researcher: positions, teaching, honors and awards, and selected academic service and affiliations." />
   <link rel="canonical" href={canonicalUrl} />
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="About Alessandro Paravano | Academic Profile & Space Economy Expertise" />
@@ -155,14 +150,13 @@ const breadcrumbSchema = {
 
   <main class="about-page about-page-v2">
     <section class="container about-v2-hero">
-      <p class="about-v2-eyebrow">About</p>
       <div class="about-v2-hero-grid">
         <div>
           <h1>Academic profile</h1>
           <p class="about-v2-role">Alessandro Paravano, PhD</p>
         </div>
         <div class="about-v2-hero-intro">
-          <p>Academic appointments, teaching, honors and awards, editorial service, conference contributions and scientific affiliations.</p>
+          <p>Academic appointments, teaching, honors and awards, and selected academic service and affiliations.</p>
           <div class="about-v2-profile-links" aria-label="Academic profiles">
             <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI</a>
             <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
@@ -171,9 +165,6 @@ const breadcrumbSchema = {
           </div>
         </div>
       </div>
-      <nav class="about-v2-local-nav" aria-label="About page sections">
-        <a href="#bio">Bio</a><a href="#position">Current position</a><a href="#teaching">Teaching</a><a href="#awards">Honors &amp; awards</a><a href="#journals">Journals</a><a href="#conferences">Conferences</a><a href="#associations">Associations</a>
-      </nav>
     </section>
 
     <section id="bio" class="about-v2-section">
@@ -234,7 +225,7 @@ const breadcrumbSchema = {
 
     <section id="awards" class="about-v2-section about-v2-section-soft">
       <div class="container about-v2-grid">
-        <div class="about-v2-heading"><h2>Honors &amp; awards</h2><p>Selected research awards, fellowships and academic distinctions.</p></div>
+        <div class="about-v2-heading"><h2>Honors &amp; awards</h2></div>
         <div class="about-v2-content about-v2-awards">
           {awards.map((award) => (
             <article class="about-v2-award">
@@ -250,42 +241,17 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <section id="journals" class="about-v2-section">
+    <section id="service" class="about-v2-section about-v2-selected-service-section">
       <div class="container about-v2-grid">
-        <div class="about-v2-heading"><h2>Collaborations with international scientific journals</h2><p>Editorial and peer-review service.</p></div>
-        <div class="about-v2-content about-v2-service-list">
-          {journalRoles.map((item) => (
-            <article class="about-v2-service-row about-v2-service-row--compact">
-              <span class="about-v2-period">{item.period || ''}</span>
-              <div class="about-v2-service-line"><strong>{item.role}</strong><a href={item.href} target="_blank" rel="noopener">{item.journal}</a><span>{item.publisher}</span></div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section id="conferences" class="about-v2-section about-v2-section-soft">
-      <div class="container about-v2-grid">
-        <div class="about-v2-heading"><h2>Contributions to international conferences</h2><p>Organization, chairing and peer-review contributions.</p></div>
-        <div class="about-v2-content about-v2-service-list">
-          {conferenceRoles.map((item) => (
-            <article class="about-v2-service-row about-v2-service-row--compact">
-              <span class="about-v2-period">{item.period}</span>
-              <div class="about-v2-service-line"><strong>{item.role}</strong>{item.href ? <a href={item.href} target="_blank" rel="noopener">{item.title}</a> : <span class="about-v2-service-title">{item.title}</span>}<span>{item.meta}</span></div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section id="associations" class="about-v2-section">
-      <div class="container about-v2-grid">
-        <div class="about-v2-heading"><h2>Scientific and professional associations</h2></div>
-        <div class="about-v2-content about-v2-service-list">
-          {associations.map((item) => (
-            <article class="about-v2-service-row about-v2-service-row--compact">
-              <span class="about-v2-period">{item.period}</span>
-              <div class="about-v2-service-line"><strong>{item.role}</strong>{item.href ? <a href={item.href} target="_blank" rel="noopener">{item.org}</a> : <span class="about-v2-service-title">{item.org}</span>}</div>
+        <div class="about-v2-heading"><h2>Selected academic service &amp; affiliations</h2></div>
+        <div class="about-v2-content about-v2-selected-service-list">
+          {selectedService.map((item) => (
+            <article class="about-v2-selected-service-row">
+              <span class="about-v2-selected-service-role">{item.role}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p><a href={item.href} target="_blank" rel="noopener">{item.org} ↗</a>{item.detail && <> <span aria-hidden="true">·</span> {item.detail}</>}</p>
+              </div>
             </article>
           ))}
         </div>
