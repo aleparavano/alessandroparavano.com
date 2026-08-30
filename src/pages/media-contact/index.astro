@@ -1,30 +1,133 @@
 ---
 import '../../styles/global.css';
+
+const siteUrl = 'https://alessandroparavano.com';
+const canonicalUrl = `${siteUrl}/media-contact/`;
+const personId = `${siteUrl}/#person`;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': personId,
+  name: 'Alessandro Paravano',
+  url: `${siteUrl}/`,
+  jobTitle: 'Assistant Professor',
+  email: 'mailto:alessandro.paravano@polimi.it',
+  worksFor: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Politecnico di Milano',
+    url: 'https://www.polimi.it/'
+  },
+  knowsAbout: [
+    'Space Economy',
+    'Earth Observation',
+    'GNSS',
+    'PNT',
+    'Satellite navigation',
+    'Satellite communications',
+    'Commercial space stations',
+    'Low Earth Orbit economy',
+    'In-space manufacturing',
+    'Space project governance',
+    'Business ecosystems',
+    'Value networks',
+    'Systems architecting',
+    'Complex infrastructures'
+  ]
+};
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${canonicalUrl}#contact-page`,
+  name: 'Media & Contact | Alessandro Paravano',
+  url: canonicalUrl,
+  description: 'Contact Alessandro Paravano for research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures.',
+  mainEntity: { '@id': personId }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Media & Contact', item: canonicalUrl }
+  ]
+};
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Media & Contact | Alessandro Paravano</title>
-  <meta name="description" content="Media & Contact — Alessandro Paravano." />
+  <meta name="description" content="Contact Alessandro Paravano for research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures." />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Media & Contact | Alessandro Paravano" />
+  <meta property="og:description" content="Research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures." />
+  <meta property="og:url" content={canonicalUrl} />
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(contactPageSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a class="brand" href="/">Alessandro Paravano</a>
-    <div class="navlinks">
-      <a href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/about/">About</a>
-      <a href="/media-contact/">Media &amp; Contact</a>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Alessandro Paravano</a>
+      <div class="navlinks">
+        <a href="/research/">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/about/">About</a>
+        <a href="/media-contact/" aria-current="page">Media &amp; Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="media-contact-page">
+    <section class="container media-contact-hero">
+      <h1>Media &amp; Contact</h1>
+      <p>For research collaborations, academic events, media enquiries, interviews or expert commentary related to the Space Economy and complex infrastructures, please get in touch.</p>
+    </section>
+
+    <section class="media-contact-section">
+      <div class="container media-contact-grid">
+        <div class="media-contact-heading"><h2>Contact</h2></div>
+        <div class="media-contact-content">
+          <p class="media-contact-name">Alessandro Paravano</p>
+          <p>Assistant Professor, Politecnico di Milano</p>
+          <a class="media-contact-email" href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+          <a class="media-contact-button" href="mailto:alessandro.paravano@polimi.it">Email Alessandro</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="media-contact-section media-contact-section--commentary">
+      <div class="container media-contact-grid">
+        <div class="media-contact-heading"><h2>Expert commentary</h2></div>
+        <div class="media-contact-content media-contact-prose">
+          <p>Available for expert commentary on the <strong>Space Economy</strong>, <strong>Earth Observation</strong>, <strong>GNSS and PNT</strong>, satellite communications, <strong>Commercial Space Stations and the LEO economy</strong>, in-space manufacturing, space project governance, business ecosystems, value networks, systems architecting and <strong>complex infrastructures</strong>.</p>
+          <p class="media-contact-note">For time-sensitive media requests, please include the topic, outlet and deadline in your message.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-identity"><strong>Alessandro Paravano</strong><span>Assistant Professor, Politecnico di Milano</span><a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a></div>
+      <div class="footer-explore"><span class="footer-label">Navigation</span><a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
     </div>
-  </nav>
-</header>
-<main class="container">
-  <h1>Media & Contact</h1>
-  <p class="lede">This page is intentionally minimal for the first deployment. We will add the final content and structure step by step.</p>
-</main>
-<footer><div class="container">© Alessandro Paravano</div></footer>
+    <div class="container footer-profiles">
+      <span class="footer-label profiles-label">Profiles</span>
+      <div class="profiles-grid">
+        <div><h3>Institutional</h3><a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano, DIG</a><a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI School of Management</a><a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a></div>
+        <div><h3>Academic profiles</h3><a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a><a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a><a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a><a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a></div>
+        <div class="profiles-continuation"><h3>Academic profiles continued</h3><a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a><a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a><a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a><a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a></div>
+        <div><h3>Professional</h3><a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a><a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
+  </footer>
 </body>
 </html>
