@@ -475,7 +475,7 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
   width: 100%;
   max-width: none;
   margin-top: 26px;
-  padding: 25px 28px 27px;
+  padding: 25px 0 27px;
   border-top: 1px solid #d9e2e7;
   border-bottom: 1px solid #d9e2e7;
   background: #f1f5f7;
@@ -760,7 +760,6 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
   .publication-takeaway-block {
     grid-template-columns: 165px minmax(0, 1fr);
     gap: 30px;
-    padding-inline: 24px;
   }
   .publication-detail-section {
     grid-template-columns: 165px minmax(0, 1fr);
@@ -782,7 +781,7 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
     grid-template-columns: 1fr;
     gap: 7px;
     margin-top: 22px;
-    padding: 20px 22px 21px;
+    padding: 20px 0 21px;
   }
   .publication-takeaway-block > span { padding-top: 0; font-size: 23px; }
   .publication-takeaway-block p { font-size: 16px; line-height: 1.5; }
