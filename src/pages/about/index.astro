@@ -24,14 +24,12 @@ const awards = [
 ];
 
 const journalRoles = [
-  { period: '2023-present', role: 'Department Editor', journal: 'Project Management Journal', publisher: 'Sage / Project Management Institute', href: 'https://journals.sagepub.com/home/pmx' },
-  { period: '2026-present', role: 'Editorial Review Board Member', journal: 'Project Management Journal', publisher: 'Sage / Project Management Institute', href: 'https://journals.sagepub.com/editorial-board/pmx' },
+  { period: 'Current', role: 'Social Media Editor and Editorial Review Board Member', journal: 'Project Management Journal', publisher: 'Sage / Project Management Institute', href: 'https://journals.sagepub.com/home/pmx' },
   { period: '2025-present', role: 'Reviewer', journal: 'New Space', publisher: 'Sage', href: 'https://journals.sagepub.com/home/nspa' },
   { period: 'Current', role: 'Reviewer', journal: 'Technological Forecasting and Social Change', publisher: 'Elsevier', href: 'https://www.sciencedirect.com/journal/technological-forecasting-and-social-change' },
   { period: '2024-present', role: 'Reviewer', journal: 'Acta Astronautica', publisher: 'Elsevier', href: 'https://www.sciencedirect.com/journal/acta-astronautica' },
   { period: '2024-present', role: 'Reviewer', journal: 'Sustainable Development', publisher: 'Wiley', href: 'https://onlinelibrary.wiley.com/journal/10991719' },
-  { period: '2023-present', role: 'Reviewer', journal: 'International Journal of Managing Projects in Business', publisher: 'Emerald', href: 'https://www.emerald.com/ijmpb' },
-  { period: '2022-present', role: 'Reviewer', journal: 'Project Management Journal', publisher: 'Sage / Project Management Institute', href: 'https://journals.sagepub.com/home/pmx' }
+  { period: '2023-present', role: 'Reviewer', journal: 'International Journal of Managing Projects in Business', publisher: 'Emerald', href: 'https://www.emerald.com/ijmpb' }
 ];
 
 const conferenceRoles = [
@@ -46,6 +44,7 @@ const conferenceRoles = [
 
 const associations = [
   { period: '2026', role: 'External consultant on Space Economy', org: 'Organizzazione Internazionale Italo-Latino Americana (IILA)', href: 'https://iila.org/it/concluso-il-corso-space-economy-e-imprenditorialita-del-progetto-asi-iila-space-education-and-capacity-building/' },
+  { period: 'Current', role: 'External Expert', org: 'European Union Agency for the Space Programme (EUSPA)', href: 'https://www.euspa.europa.eu/opportunities/procurement-grants/call-experts' },
   { period: '2025-present', role: 'Member', org: 'Academy of Management (AOM)', href: 'https://www.aom.org/' },
   { period: '2025-present', role: 'ISAM Economy Task Force co-leader', org: 'International Astronautical Federation (IAF)', href: 'https://www.iafastro.org/' },
   { period: '2025', role: 'External Reviewer', org: 'Icelandic Research Fund', href: 'https://island.is/en/p/icelandic-research-fund' },
@@ -163,7 +162,7 @@ const breadcrumbSchema = {
           <p class="about-v2-role">Alessandro Paravano, PhD</p>
         </div>
         <div class="about-v2-hero-intro">
-          <p><strong>Alessandro Paravano</strong> is an Assistant Professor at Politecnico di Milano and a researcher in the Space Economy Observatory. This page summarizes his academic appointments, teaching, honors and awards, editorial service, conference contributions and scientific affiliations.</p>
+          <p>Academic appointments, teaching, honors and awards, editorial service, conference contributions and scientific affiliations.</p>
           <div class="about-v2-profile-links" aria-label="Academic profiles">
             <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI</a>
             <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
@@ -181,8 +180,8 @@ const breadcrumbSchema = {
       <div class="container about-v2-grid">
         <div class="about-v2-heading"><h2>Bio</h2></div>
         <div class="about-v2-content about-v2-prose">
-          <p><strong>Alessandro Paravano</strong> is an Assistant Professor and Core Faculty member at the POLIMI School of Management, Politecnico di Milano, and a senior researcher with the Space Economy Observatory. His primary empirical domain is the <strong>Space Economy</strong>. He studies how new technologies, private actors, markets and governance arrangements reshape industrial value chains, business ecosystems and the relationship between space infrastructure and end users.</p>
-          <p>His research connects strategic project management, systems engineering and systems architecting to examine value and value networks, business ecosystems and project ecologies, project governance, commercialization, resilience and long-term project success. Empirical areas include Earth Observation, GNSS and PNT, satellite communications, launchers, Commercial Space Stations, the LEO economy, in-space manufacturing and other complex infrastructures. He combines qualitative and quantitative methods and holds a PhD and MSc in Management Engineering from Politecnico di Milano with highest honours.</p>
+          <p><strong>Alessandro Paravano</strong> is an Assistant Professor and Core Faculty member at the <strong>POLIMI School of Management, Politecnico di Milano</strong>, and a Senior Researcher with the <strong>Space Economy Observatory</strong>. His primary empirical domain is the <strong>Space Economy</strong>, where he studies how new technologies, private actors, markets and governance arrangements reshape <strong>industrial value chains</strong>, <strong>business ecosystems</strong> and the relationship between space infrastructure and end users.</p>
+          <p>His research connects <strong>strategic project management</strong>, <strong>systems engineering</strong> and <strong>systems architecting</strong> to examine <strong>value and value networks</strong>, <strong>project ecosystems and ecologies</strong>, <strong>project governance</strong>, commercialization, resilience and long-term project success. Empirical areas include <strong>Earth Observation</strong>, <strong>GNSS and PNT</strong>, satellite communications, launchers, <strong>Commercial Space Stations</strong>, the <strong>LEO economy</strong>, <strong>in-space manufacturing</strong> and other <strong>complex infrastructures</strong>. He combines qualitative and quantitative methods and holds a PhD and MSc in Management Engineering from Politecnico di Milano with highest honours.</p>
         </div>
       </div>
     </section>
@@ -190,19 +189,22 @@ const breadcrumbSchema = {
     <section id="position" class="about-v2-section about-v2-section-soft">
       <div class="container about-v2-grid">
         <div class="about-v2-heading"><h2>Current position</h2></div>
-        <div class="about-v2-content">
-          <div class="about-v2-position-card">
-            <p class="about-v2-kicker">Since May 2025</p>
+        <div class="about-v2-content about-v4-position-list">
+          <article>
             <h3>Assistant Professor, Politecnico di Milano</h3>
-            <p class="about-v2-subtitle">Department of Management, Economics and Industrial Engineering · POLIMI School of Management · Core Faculty</p>
-            <div class="about-v2-inline-links">
-              <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="noopener">School of Management profile ↗</a>
-              <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="noopener">Department profile ↗</a>
-            </div>
-          </div>
-          <div class="about-v2-split-rows">
-            <article><span>Research role</span><div><h3>Senior Researcher, Space Economy Observatory</h3><p>Politecnico di Milano, 2020-present. Research on space markets, industrial transition, value chains, satellite applications and the evolution of the Space Economy ecosystem.</p></div></article>
-          </div>
+            <p>Department of Management, Economics and Industrial Engineering and POLIMI School of Management. Core Faculty.</p>
+            <div class="about-v2-inline-links"><a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="noopener">School of Management profile ↗</a><a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="noopener">Department profile ↗</a></div>
+          </article>
+          <article>
+            <h3>Senior Researcher, Space Economy Observatory</h3>
+            <p>Research on space markets, industrial transition, value chains, satellite applications and the evolution of the Space Economy ecosystem.</p>
+            <div class="about-v2-inline-links"><a href="https://eng.osservatori.net/space-economy-eng/" target="_blank" rel="noopener">Space Economy Observatory ↗</a></div>
+          </article>
+          <article>
+            <h3>Lecturer, POLIMI Graduate School of Management</h3>
+            <p>Executive education on the Space Economy and the aerospace sector.</p>
+            <div class="about-v2-inline-links"><a href="https://www.gsom.polimi.it/" target="_blank" rel="noopener">POLIMI Graduate School of Management ↗</a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -214,16 +216,16 @@ const breadcrumbSchema = {
           <div class="about-v2-teaching-block">
             <h3>Current university teaching</h3>
             <div class="about-v2-teaching-list">
-              <article><span>MSc</span><div><strong>Space Economy and Earth Observation Business</strong><p>Assistant Professor, Politecnico di Milano, 2025-present.</p></div></article>
-              <article><span>MSc</span><div><strong>Aerospace Project Management</strong><p>Assistant Professor, Politecnico di Milano, 2025-present.</p></div></article>
+              <article><span>MSc</span><div><strong>Space Economy and Earth Observation Business</strong><p>Politecnico di Milano</p></div></article>
+              <article><span>MSc</span><div><strong>Aerospace Project Management</strong><p>Politecnico di Milano</p></div></article>
             </div>
             <a class="about-v2-source-link" href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_DIDATTICA=evento&aa=2026&k_doc=457597&lang=EN&tab_ricerca=1" target="_blank" rel="noopener">Official POLIMI teaching record ↗</a>
           </div>
           <div class="about-v2-teaching-block">
             <h3>Executive education</h3>
             <div class="about-v2-teaching-list">
-              <article><span>EMBA</span><div><strong>Space Economy elective module</strong><p>Lecturer, POLIMI Graduate School of Management, 2022-present.</p></div></article>
-              <article><span>EMBA</span><div><strong>Oklahoma EMBA study tour on the EU aerospace sector</strong><p>Lecturer, POLIMI Graduate School of Management, 2025-present.</p></div></article>
+              <article><span>EMBA</span><div><strong>Space Economy EMBA module</strong><p>POLIMI Graduate School of Management</p></div></article>
+              <article><span>EMBA</span><div><strong>Oklahoma EMBA study tour on the EU aerospace sector</strong><p>POLIMI Graduate School of Management</p></div></article>
             </div>
           </div>
         </div>
