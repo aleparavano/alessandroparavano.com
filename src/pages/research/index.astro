@@ -1,89 +1,57 @@
 ---
 import '../../styles/global.css';
+import { publications as publicationData } from '../publications/publications.js';
+
+const publicationBySlug = new Map(publicationData.map((publication) => [publication.slug, publication]));
 
 const perspectives = [
   {
     title: 'Ecosystems & ecologies',
     description: 'Research on how interdependent actors, organizations, technologies, and institutions form, interact, and evolve within business, innovation, and entrepreneurial ecosystems, as well as project ecologies and other ecological configurations.',
-    publications: [
-      {
-        title: 'End-Users Engagement for Enacting Value of Complex Projects: An Ecological Perspective',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'Journal of Management in Engineering, 2024',
-        doi: '10.1061/JMENEA.MEENG-5724'
-      },
-      {
-        title: 'Value mechanisms of satellite-based infrastructure in the new space economy',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'OECD Space Forum / OECD Publishing, 2024',
-        doi: '10.1787/a729c640-en'
-      }
+    publicationSlugs: [
+      'end-users-engagement-enacting-value-complex-projects',
+      'value-mechanisms-satellite-infrastructure-new-space-economy'
     ]
   },
   {
     title: 'Value & value networks',
     description: 'Research on how value is perceived, created, delivered, captured, and distributed among multiple stakeholders, with particular attention to the transition from linear value chains to interconnected value networks.',
-    publications: [
-      {
-        title: 'What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'Acta Astronautica, 2023',
-        doi: '10.1016/j.actaastro.2023.05.001'
-      },
-      {
-        title: 'Projects benefit realisation through sustainable innovation: drivers and challenges',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'Management Decision, 2025',
-        doi: '10.1108/MD-08-2024-1751'
-      }
+    publicationSlugs: [
+      'what-is-value-new-space-economy',
+      'projects-benefit-realisation-through-sustainable-innovation'
     ]
   },
   {
     title: 'Systems architecting',
     description: 'Research on how complex systems can be structured and analysed by connecting stakeholder needs, value, technologies, risks, and organizational arrangements across complex socio-technical environments.',
-    publications: [
-      {
-        title: 'Drivers and Barriers in Shaping Resilience Projects: an Investigation in the Space Economy',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'IEEE Transactions on Engineering Management, 2025',
-        doi: '10.1109/TEM.2025.3568298'
-      },
-      {
-        title: 'Toward the LEO economy: A value assessment of commercial space stations for space and non-space users',
-        authors: 'Alessandro Paravano, Brendan Rosseau, Giorgio Locatelli, Mathew Weinzierl, Paolo Trucco',
-        venue: 'Acta Astronautica, Vol. 228, 2025, pp. 453–473',
-        doi: '10.1016/j.actaastro.2024.11.060'
-      }
+    publicationSlugs: [
+      'drivers-barriers-resilience-projects-space-economy',
+      'toward-the-leo-economy-commercial-space-stations'
     ]
   },
   {
     title: 'Project management',
     description: 'Research on how complex projects and infrastructures are planned, organized, and managed to generate long-term value under uncertainty, institutional change, sustainability challenges, and evolving stakeholder needs.',
-    publications: [
-      {
-        title: 'Small change or big bang? The shift from legacy to new space project planning',
-        authors: 'Alessandro Paravano, Giorgio Locatelli, Paolo Trucco',
-        venue: 'Acta Astronautica, 2026',
-        doi: '10.1016/j.actaastro.2026.07.011'
-      },
-      {
-        title: 'The impact of the New Space Economy on Sustainability: the ESA Business Application Programme case',
-        authors: 'Alessandro Paravano, Marco Patrizi, Emanuele Razzano, Marco Feliciani, Giorgio Locatelli, Paolo Trucco',
-        venue: 'Acta Astronautica, 2024',
-        doi: '10.1016/j.actaastro.2024.05.046'
-      }
+    publicationSlugs: [
+      'small-change-or-big-bang-new-space-project-planning',
+      'impact-new-space-economy-on-sustainability'
     ]
   }
-];
+].map((perspective) => ({
+  ...perspective,
+  publications: perspective.publicationSlugs
+    .map((slug) => publicationBySlug.get(slug))
+    .filter(Boolean)
+}));
 
 const projects = [
   {
-    title: 'PULSE — PNT User Landscapes and Segment Evolution',
+    title: 'PULSE: PNT User Landscapes and Segment Evolution',
     meta: 'European Space Agency · Principal Investigator · 2026–2027',
     description: 'Research on emerging opportunities, markets, applications, and user needs for Positioning, Navigation and Timing (PNT), developing a robust and scalable methodology to identify promising scenarios in non-space sectors and support the competitiveness of the European and Canadian PNT industry.'
   },
   {
-    title: 'CLEO — Commercializing the Low Earth Orbit',
+    title: 'CLEO: Commercializing the Low Earth Orbit',
     meta: 'Fulbright · Principal Investigator · 2026',
     description: 'CLEO studies how Commercial Space Stations can create socio-economic value across emerging Low Earth Orbit markets. Focusing on Starlab, the project develops a quantitative value-network model using systems architecting and original US data to identify key beneficiaries, value flows, and implications for station design and end-user alignment.'
   },
@@ -93,7 +61,7 @@ const projects = [
     description: 'Research on governance alternatives for the Space Smart Factory, including Public-Private Partnership models, Factory-as-a-Service, programme governance, monitoring and control mechanisms, and long-term project delivery.'
   },
   {
-    title: 'NE2AP — Environmental and Economic Appraisal of Power Plants to Plan Net-Zero Infrastructure',
+    title: 'NE2AP: Environmental and Economic Appraisal of Power Plants to Plan Net-Zero Infrastructure',
     meta: 'Politecnico di Milano · Senior Researcher · 2023–2025',
     description: 'Research on the appraisal of long-lived energy infrastructures, integrating lifecycle assessment, uncertainty, real options, economic evaluation, and environmental decision-making to support net-zero infrastructure development.'
   },
@@ -118,18 +86,21 @@ const projects = [
     description: 'Long-term research programme on the technological, industrial, and business evolution of the Space Economy, including ecosystem mapping, market analysis, technology trends, satellite-based applications, value networks, startup and industry dynamics, and the adoption of space technologies across non-space sectors.'
   },
   {
-    title: 'Space Economy: Market Analysis and New Business Models — Analysis of the Value Network and Emerging Business Models in the Space Economy',
+    title: 'Space Economy: Market Analysis and New Business Models. Analysis of the Value Network and Emerging Business Models in the Space Economy',
     meta: 'Politecnico di Milano · Principal Investigator · 2020–2021',
     description: 'Research on the evolution of the Space Economy at national and international levels, including market development, technology and demand dynamics, emerging business models, and the transition from linear industrial value chains toward more complex value networks.'
   }
 ];
+
+const siteUrl = 'https://alessandroparavano.com';
+const personId = `${siteUrl}/#person`;
 
 const researchSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Research | Alessandro Paravano',
   url: 'https://alessandroparavano.com/research/',
-  description: 'Research by Alessandro Paravano on the Space Economy, complex infrastructures, ecosystems, value networks, systems architecting, project management, PNT, satellite applications, and emerging space markets.',
+  description: 'Alessandro Paravano researches the Space Economy and complex infrastructures through ecosystems, value networks, systems architecting and project management.',
   about: [
     { '@type': 'Thing', name: 'Space Economy' },
     { '@type': 'Thing', name: 'Complex infrastructures' },
@@ -146,8 +117,9 @@ const researchSchema = {
   ],
   mainEntity: {
     '@type': 'Person',
+    '@id': personId,
     name: 'Alessandro Paravano',
-    url: 'https://alessandroparavano.com/',
+    url: `${siteUrl}/`,
     jobTitle: 'Assistant Professor',
     affiliation: {
       '@type': 'CollegeOrUniversity',
@@ -161,9 +133,13 @@ const researchSchema = {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Research | Alessandro Paravano — Space Economy &amp; Complex Infrastructures</title>
-  <meta name="description" content="Research by Alessandro Paravano on the Space Economy, complex infrastructures, ecosystems, value networks, systems architecting, project management, PNT, satellite applications, and emerging space markets." />
+  <title>Research | Alessandro Paravano | Space Economy &amp; Complex Infrastructures</title>
+  <meta name="description" content="Alessandro Paravano researches the Space Economy and complex infrastructures through ecosystems, value networks, systems architecting and project management." />
   <link rel="canonical" href="https://alessandroparavano.com/research/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Research | Alessandro Paravano | Space Economy &amp; Complex Infrastructures" />
+  <meta property="og:description" content="Research on the Space Economy and complex infrastructures through ecosystems, value networks, systems architecting and project management." />
+  <meta property="og:url" content="https://alessandroparavano.com/research/" />
   <script type="application/ld+json" set:html={JSON.stringify(researchSchema)}></script>
 </head>
 <body>
@@ -245,9 +221,9 @@ const researchSchema = {
             <div class="perspective-publications">
               {perspective.publications.map((publication) => (
                 <div class="perspective-publication">
-                  <a class="perspective-publication-title" href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.title}</a>
-                  <p>{publication.authors}</p>
-                  <p>{publication.venue}</p>
+                  <a class="perspective-publication-title" href={`/publications/${publication.slug}/`}>{publication.title}</a>
+                  <p>{publication.authors.join(', ')}</p>
+                  <p>{publication.venue}{publication.details ? <> · {publication.details}</> : ''}</p>
                   <p>DOI: <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener">{publication.doi}</a></p>
                 </div>
               ))}
@@ -298,9 +274,9 @@ const researchSchema = {
       <div class="profiles-grid">
         <div>
           <h3>Institutional</h3>
-          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano — DIG</a>
-          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano — School of Management</a>
-          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano — University Profile</a>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano, DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">Politecnico di Milano, School of Management</a>
+          <a href="https://onlineservices.polimi.it/manifesti/manifesti/controller/ricerche/RicercaPerDocentiPublic.do?EVN_PRODOTTI=evento&k_doc=457597&lang=EN&aa=2026&tab_ricerca=1" target="_blank" rel="me noopener">Politecnico di Milano, University Profile</a>
           <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
         </div>
         <div>
