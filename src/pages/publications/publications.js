@@ -689,7 +689,7 @@ export const publications = [
     "citation": "Paravano, A., Locatelli, G., & Trucco, P. (2026). Planning Complex Projects for Value Creation: A Discussion Guide for Decision Makers. IEEE Engineering Management Review, 54(4). https://doi.org/10.1109/EMR.2025.3628802",
     "related": [
       "small-change-or-big-bang-new-space-project-planning",
-      "drivers-barriers-resilience-projects-space-economy",
+      "end-users-engagement-enacting-value-complex-projects",
       "yes-construction-cost-time-scope-infrastructure-success"
     ],
     "officialKeywords": [
@@ -1036,7 +1036,7 @@ export const publications = [
     "citation": "Paravano, A., Rosseau, B., Locatelli, G., Weinzierl, M., & Trucco, P. (2025). Toward the LEO economy: A value assessment of commercial space stations for space and non-space users. Acta Astronautica, 228, 453–473. https://doi.org/10.1016/j.actaastro.2024.11.060",
     "related": [
       "what-is-value-new-space-economy",
-      "planning-complex-projects-for-value-creation",
+      "value-mechanisms-satellite-infrastructure-new-space-economy",
       "creating-claiming-social-value-science-driven-capital-projects"
     ],
     "officialKeywords": [
@@ -1153,7 +1153,7 @@ export const publications = [
     "related": [
       "evolution-space-programs-governance",
       "small-change-or-big-bang-new-space-project-planning",
-      "planning-complex-projects-for-value-creation"
+      "framing-risk-landscape-space-economy-trends"
     ],
     "officialKeywords": [
       "Space program governance",
@@ -2335,7 +2335,7 @@ export const publications = [
     "related": [
       "what-is-value-new-space-economy",
       "end-users-engagement-enacting-value-complex-projects",
-      "impact-new-space-economy-on-sustainability"
+      "toward-the-leo-economy-commercial-space-stations"
     ],
     "officialKeywords": [
       "New Space Economy",
@@ -2452,7 +2452,7 @@ export const publications = [
     "related": [
       "evolving-governance-legacy-space-new-space",
       "small-change-or-big-bang-new-space-project-planning",
-      "planning-complex-projects-for-value-creation"
+      "framing-risk-landscape-space-economy-trends"
     ],
     "officialKeywords": [
       "Programs Governance",
