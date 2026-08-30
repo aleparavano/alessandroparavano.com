@@ -3,6 +3,7 @@ import '../../styles/global.css';
 import { journalArticles, booksAndChapters, conferencePapers, editorials } from './publications.js';
 
 const siteUrl = 'https://alessandroparavano.com';
+const personId = `${siteUrl}/#person`;
 
 const byYear = (items) => {
   const years = [...new Set(items.map((item) => item.year))].sort((a, b) => b - a);
@@ -28,9 +29,10 @@ const publicationsSchema = {
   '@type': 'CollectionPage',
   name: 'Publications | Alessandro Paravano',
   url: `${siteUrl}/publications/`,
-  description: 'Journal articles, books, chapters, reports, international conference papers and presentations, and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting.',
+  description: 'Publications by Alessandro Paravano on the Space Economy, complex infrastructures, project value, ecosystems, governance and systems architecting.',
   author: {
     '@type': 'Person',
+    '@id': personId,
     name: 'Alessandro Paravano',
     url: `${siteUrl}/`,
     identifier: 'https://orcid.org/0000-0002-6884-3712'
@@ -44,7 +46,11 @@ const publicationsSchema = {
         '@type': item.type === 'report' ? 'Report' : item.type === 'chapter' ? 'Chapter' : item.type === 'conference' ? 'CreativeWork' : 'ScholarlyArticle',
         name: item.title,
         datePublished: String(item.year),
-        author: item.authors.filter((name) => !name.includes('et al.')).map((name) => ({ '@type': 'Person', name })),
+        author: item.authors.filter((name) => !name.includes('et al.')).map((name) => (
+          name === 'Alessandro Paravano'
+            ? { '@type': 'Person', '@id': personId, name }
+            : { '@type': 'Person', name }
+        )),
         isPartOf: { '@type': 'CreativeWork', name: item.venue },
         identifier: item.doi ? `https://doi.org/${item.doi}` : undefined,
         url: primaryUrl(item),
@@ -68,9 +74,13 @@ const renderYearGroups = byYear;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Publications | Alessandro Paravano | Space Economy &amp; Complex Infrastructures</title>
-  <meta name="description" content="Journal articles, books and chapters, international conference papers and presentations, and editorial work by Alessandro Paravano on the Space Economy, complex infrastructures, value, ecosystems, governance and systems architecting." />
+  <title>Publications | Alessandro Paravano | Space Economy Research</title>
+  <meta name="description" content="Publications by Alessandro Paravano on the Space Economy, complex infrastructures, project value, ecosystems, governance and systems architecting." />
   <link rel="canonical" href="https://alessandroparavano.com/publications/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Publications | Alessandro Paravano | Space Economy Research" />
+  <meta property="og:description" content="Peer-reviewed research and scholarly publications on the Space Economy, complex infrastructures, project value, ecosystems and governance." />
+  <meta property="og:url" content="https://alessandroparavano.com/publications/" />
   <script type="application/ld+json" set:html={JSON.stringify(publicationsSchema)}></script>
 
   <style>
@@ -133,7 +143,7 @@ const renderYearGroups = byYear;
     <section class="container publications-page-section" aria-labelledby="journal-heading">
       <div class="publications-section-heading">
         <h2 id="journal-heading">Journal articles</h2>
-        <p>Peer-reviewed research articles, ordered from the most recent. Detailed research pages are being added progressively while DOI and repository links remain available from the complete list.</p>
+        <p>Peer-reviewed research articles, ordered from the most recent, with detailed research pages plus DOI, publisher and repository links where available.</p>
       </div>
 
       <div class="publications-index">
