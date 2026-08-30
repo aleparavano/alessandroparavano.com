@@ -2214,3 +2214,151 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
   .media-v9-contact-copy strong { font-size: 17px; }
   .media-v9-outreach-item h3 { font-size: 17px; }
 }
+
+/* Subtle editorial motion
+   Progressive enhancement only: the site remains fully usable without motion support. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --motion-fast: 160ms;
+    --motion-base: 220ms;
+    --motion-slow: 420ms;
+    --motion-ease: cubic-bezier(.22, .61, .36, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation: editorial-page-out 140ms ease-out both;
+  }
+
+  ::view-transition-new(root) {
+    animation: editorial-page-in var(--motion-base) var(--motion-ease) both;
+  }
+
+  @keyframes editorial-page-out {
+    from { opacity: 1; }
+    to { opacity: .94; }
+  }
+
+  @keyframes editorial-page-in {
+    from { opacity: .58; }
+    to { opacity: 1; }
+  }
+
+  .brand,
+  .navlinks a,
+  .hero-links a,
+  .publication-item h3 a,
+  .publication-link,
+  .all-publications,
+  .publication-index-item a,
+  .publication-index-actions a,
+  .publication-explore,
+  .research-publications-link,
+  .perspective-publication a,
+  .related-publication a,
+  .publication-access-links a,
+  .publication-detail-links a,
+  .about-v2-inline-links a,
+  .media-v9-contact-card,
+  .media-v9-outreach-item h3 a,
+  .site-footer a {
+    transition:
+      color var(--motion-fast) var(--motion-ease),
+      border-color var(--motion-fast) var(--motion-ease),
+      opacity var(--motion-fast) var(--motion-ease),
+      transform var(--motion-fast) var(--motion-ease);
+  }
+
+  .media-v9-icon,
+  .media-v9-arrow,
+  .email-button,
+  .citation-download-button {
+    transition:
+      color var(--motion-fast) var(--motion-ease),
+      background-color var(--motion-fast) var(--motion-ease),
+      border-color var(--motion-fast) var(--motion-ease),
+      transform var(--motion-fast) var(--motion-ease),
+      opacity var(--motion-fast) var(--motion-ease);
+  }
+
+  .media-v9-contact-card:hover .media-v9-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* A soft white veil dissolves as each major editorial section enters the viewport.
+   This uses CSS scroll-driven animations, so unsupported browsers simply ignore it. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :is(
+      .section,
+      .contact-section,
+      .research-page-section,
+      .research-projects-section,
+      .publications-page-section,
+      .about-v2-section,
+      .about-v2-next,
+      .media-v9-section,
+      .publication-detail-section,
+      .publication-citation-section
+    ) {
+      position: relative;
+      isolation: isolate;
+      animation: editorial-section-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 28%;
+    }
+
+    :is(
+      .section,
+      .contact-section,
+      .research-page-section,
+      .research-projects-section,
+      .publications-page-section,
+      .about-v2-section,
+      .about-v2-next,
+      .media-v9-section,
+      .publication-detail-section,
+      .publication-citation-section
+    )::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(252, 252, 251, .58) 0%,
+        rgba(252, 252, 251, .32) 42%,
+        rgba(252, 252, 251, 0) 100%
+      );
+      opacity: .58;
+      animation: editorial-white-veil linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+
+    @keyframes editorial-section-rise {
+      from {
+        transform: translateY(6px);
+        opacity: .96;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes editorial-white-veil {
+      from { opacity: .58; }
+      to { opacity: 0; }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
