@@ -18,12 +18,18 @@ const personSchema = {
     name: 'Politecnico di Milano',
     url: 'https://www.polimi.it/'
   },
+  sameAs: [
+    'https://www.linkedin.com/in/alessandroparavano/',
+    'https://twitter.com/AleParavano',
+    'https://orcid.org/0000-0002-6884-3712',
+    'https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ',
+    'https://re.public.polimi.it/cris/rp/rp111035'
+  ],
   knowsAbout: [
     'Space Economy',
     'Earth Observation',
     'GNSS',
     'PNT',
-    'Satellite navigation',
     'Satellite communications',
     'Commercial space stations',
     'Low Earth Orbit economy',
@@ -42,7 +48,7 @@ const contactPageSchema = {
   '@id': `${canonicalUrl}#contact-page`,
   name: 'Media & Contact | Alessandro Paravano',
   url: canonicalUrl,
-  description: 'Contact Alessandro Paravano for research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures.',
+  description: 'Contact Alessandro Paravano for research collaborations, academic events, media enquiries, interviews and expert commentary on the Space Economy and complex infrastructures.',
   mainEntity: { '@id': personId }
 };
 
@@ -61,11 +67,11 @@ const breadcrumbSchema = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Media & Contact | Alessandro Paravano</title>
-  <meta name="description" content="Contact Alessandro Paravano for research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures." />
+  <meta name="description" content="Contact Alessandro Paravano for research collaborations, academic events, media enquiries, interviews and expert commentary on the Space Economy and complex infrastructures." />
   <link rel="canonical" href={canonicalUrl} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Media & Contact | Alessandro Paravano" />
-  <meta property="og:description" content="Research collaborations, academic events, media enquiries and expert commentary on the Space Economy and complex infrastructures." />
+  <meta property="og:description" content="Research collaborations, media enquiries, interviews and expert commentary on the Space Economy and complex infrastructures." />
   <meta property="og:url" content={canonicalUrl} />
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(contactPageSchema)}></script>
@@ -87,27 +93,102 @@ const breadcrumbSchema = {
   <main class="media-contact-page">
     <section class="container media-contact-hero">
       <h1>Media &amp; Contact</h1>
-      <p>For research collaborations, academic events, media enquiries, interviews or expert commentary related to the Space Economy and complex infrastructures, please get in touch.</p>
+      <p>For research collaborations, academic events, interviews or expert commentary, please get in touch.</p>
     </section>
 
-    <section class="media-contact-section">
-      <div class="container media-contact-grid">
-        <div class="media-contact-heading"><h2>Contact</h2></div>
-        <div class="media-contact-content">
-          <p class="media-contact-name">Alessandro Paravano</p>
-          <p>Assistant Professor, Politecnico di Milano</p>
-          <a class="media-contact-email" href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
-          <a class="media-contact-button" href="mailto:alessandro.paravano@polimi.it">Email Alessandro</a>
+    <section class="media-contact-section" aria-labelledby="contact-heading">
+      <div class="container media-contact-layout">
+        <div class="media-contact-heading">
+          <h2 id="contact-heading">Get in touch</h2>
+        </div>
+
+        <div class="media-contact-channels">
+          <a class="contact-channel" href="mailto:alessandro.paravano@polimi.it">
+            <span class="contact-channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <rect x="3" y="5" width="18" height="14" rx="1.5"></rect>
+                <path d="M4 7l8 6 8-6"></path>
+              </svg>
+            </span>
+            <span class="contact-channel-copy">
+              <strong>Email</strong>
+              <span>alessandro.paravano@polimi.it</span>
+            </span>
+            <span class="contact-channel-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="contact-channel" href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">
+            <span class="contact-channel-icon contact-channel-icon--linkedin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M6.5 9.5V18"></path>
+                <path d="M6.5 6.25v.25"></path>
+                <path d="M10.5 18v-4.75c0-2.1 1.25-3.25 3-3.25 1.9 0 3 1.25 3 3.5V18"></path>
+                <path d="M10.5 10.25V18"></path>
+              </svg>
+            </span>
+            <span class="contact-channel-copy">
+              <strong>LinkedIn</strong>
+              <span>Professional profile</span>
+            </span>
+            <span class="contact-channel-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="contact-channel" href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">
+            <span class="contact-channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M5 4l14 16"></path>
+                <path d="M19 4L5 20"></path>
+              </svg>
+            </span>
+            <span class="contact-channel-copy">
+              <strong>X / Twitter</strong>
+              <span>@AleParavano</span>
+            </span>
+            <span class="contact-channel-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="media-contact-section media-contact-section--commentary">
-      <div class="container media-contact-grid">
-        <div class="media-contact-heading"><h2>Expert commentary</h2></div>
-        <div class="media-contact-content media-contact-prose">
-          <p>Available for expert commentary on the <strong>Space Economy</strong>, <strong>Earth Observation</strong>, <strong>GNSS and PNT</strong>, satellite communications, <strong>Commercial Space Stations and the LEO economy</strong>, in-space manufacturing, space project governance, business ecosystems, value networks, systems architecting and <strong>complex infrastructures</strong>.</p>
-          <p class="media-contact-note">For time-sensitive media requests, please include the topic, outlet and deadline in your message.</p>
+    <section class="media-contact-section media-contact-section--commentary" aria-labelledby="commentary-heading">
+      <div class="container media-contact-layout">
+        <div class="media-contact-heading">
+          <h2 id="commentary-heading">Expert commentary</h2>
+        </div>
+        <div class="media-contact-commentary">
+          <p>Available for commentary on the <strong>Space Economy</strong>, satellite applications and markets, <strong>Commercial Space Stations and the LEO economy</strong>, space project governance, business ecosystems, value networks and <strong>complex infrastructures</strong>.</p>
+          <p class="media-contact-note">For time-sensitive media requests, email is the fastest channel. Please include the topic, outlet and deadline.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="media-contact-section media-contact-section--outreach" aria-labelledby="outreach-heading">
+      <div class="container media-contact-layout">
+        <div class="media-contact-heading">
+          <h2 id="outreach-heading">Selected media &amp; outreach</h2>
+        </div>
+        <div class="media-outreach-grid">
+          <article class="media-outreach-item">
+            <p class="media-outreach-meta">Talk <span aria-hidden="true">·</span> Space Economy Observatory <span aria-hidden="true">·</span> March 2026</p>
+            <h3><a href="https://www.osservatori.net/convegno/space-economy/convegno-dei-risultati-ricerca-osservatorio-space-economy/" target="_blank" rel="noopener">Opportunità e sfide per la filiera spaziale italiana</a></h3>
+            <p>Presentation at the annual Space Economy Observatory conference at Politecnico di Milano.</p>
+          </article>
+
+          <article class="media-outreach-item">
+            <p class="media-outreach-meta">Event <span aria-hidden="true">·</span> BIP InSummit <span aria-hidden="true">·</span> October 2025</p>
+            <h3><a href="https://www.in-summit.com/events/lo-spazio-come-ecosistema-di-innovazione-multidisciplinare" target="_blank" rel="noopener">Lo spazio come ecosistema di innovazione multidisciplinare</a></h3>
+            <p>Contribution to the BIP InSummit breakout session on space as a multidisciplinary innovation ecosystem.</p>
+          </article>
+
+          <article class="media-outreach-item">
+            <p class="media-outreach-meta">Article <span aria-hidden="true">·</span> Osservatori.net <span aria-hidden="true">·</span> March 2023</p>
+            <h3><a href="https://www.osservatori.net/insight/space-economy/ruolo-space-economy-sfide-sanitarie-insight/" target="_blank" rel="noopener">Il ruolo della Space Economy nell’affrontare le sfide sanitarie contemporanee</a></h3>
+          </article>
+
+          <article class="media-outreach-item">
+            <p class="media-outreach-meta">Article <span aria-hidden="true">·</span> Osservatori.net <span aria-hidden="true">·</span> February 2023</p>
+            <h3><a href="https://www.osservatori.net/insight/space-economy/infrastrutture-abilitanti-innovazione-digitale-internet-satellitare-insight/" target="_blank" rel="noopener">Infrastrutture abilitanti per l’Innovazione Digitale: l’Internet Satellitare</a></h3>
+          </article>
         </div>
       </div>
     </section>
@@ -115,18 +196,48 @@ const breadcrumbSchema = {
 
   <footer class="site-footer">
     <div class="container footer-top">
-      <div class="footer-identity"><strong>Alessandro Paravano</strong><span>Assistant Professor, Politecnico di Milano</span><a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a></div>
-      <div class="footer-explore"><span class="footer-label">Navigation</span><a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a></div>
+      <div class="footer-identity">
+        <strong>Alessandro Paravano</strong>
+        <span>Assistant Professor, Politecnico di Milano</span>
+        <a href="mailto:alessandro.paravano@polimi.it">alessandro.paravano@polimi.it</a>
+      </div>
+      <div class="footer-explore">
+        <span class="footer-label">Navigation</span>
+        <a href="/research/">Research</a> · <a href="/publications/">Publications</a> · <a href="/about/">About</a> · <a href="/media-contact/">Media &amp; Contact</a>
+      </div>
     </div>
+
     <div class="container footer-profiles">
       <span class="footer-label profiles-label">Profiles</span>
       <div class="profiles-grid">
-        <div><h3>Institutional</h3><a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano, DIG</a><a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI School of Management</a><a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a></div>
-        <div><h3>Academic profiles</h3><a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a><a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a><a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a><a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a></div>
-        <div class="profiles-continuation"><h3>Academic profiles continued</h3><a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a><a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a><a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a><a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a></div>
-        <div><h3>Professional</h3><a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a><a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a></div>
+        <div>
+          <h3>Institutional</h3>
+          <a href="https://www.dig.polimi.it/en/staff/alessandro.paravano" target="_blank" rel="me noopener">Politecnico di Milano, DIG</a>
+          <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI School of Management</a>
+          <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
+        </div>
+        <div>
+          <h3>Academic profiles</h3>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://openalex.org/authors/A5004512386" target="_blank" rel="me noopener">OpenAlex</a>
+          <a href="https://www.webofscience.com/wos/author/record/KUC-6564-2024" target="_blank" rel="me noopener">Web of Science</a>
+        </div>
+        <div class="profiles-continuation">
+          <h3>Academic profiles continued</h3>
+          <a href="https://www.scopus.com/inward/authorDetails.url?authorID=58242859800&partnerID=MN8TOARS" target="_blank" rel="me noopener">Scopus</a>
+          <a href="https://authors.repec.org/pro/ppa1688/" target="_blank" rel="me noopener">RePEc</a>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7685061" target="_blank" rel="me noopener">SSRN</a>
+          <a href="https://www.researchgate.net/profile/Alessandro-Paravano" target="_blank" rel="me noopener">ResearchGate</a>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <a href="https://www.linkedin.com/in/alessandroparavano/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a href="https://twitter.com/AleParavano" target="_blank" rel="me noopener">X / Twitter</a>
+        </div>
       </div>
     </div>
+
     <div class="container footer-bottom">© {new Date().getFullYear()} Alessandro Paravano</div>
   </footer>
 </body>
