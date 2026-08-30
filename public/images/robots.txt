@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://alessandroparavano.com/sitemap.xml
