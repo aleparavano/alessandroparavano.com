@@ -938,7 +938,7 @@ export const publications = [
       "Alessandro Paravano",
       "Brendan Rosseau",
       "Giorgio Locatelli",
-      "Mathew Weinzierl",
+      "Matthew Weinzierl",
       "Paolo Trucco"
     ],
     "venue": "Acta Astronautica",
@@ -2815,7 +2815,7 @@ export const publications = [
       "Alessandro Paravano",
       "Brendan Rosseau",
       "Giorgio Locatelli",
-      "Mathew Weinzierl",
+      "Matthew Weinzierl",
       "Paolo Trucco"
     ],
     "venue": "International Astronautical Congress (IAC)",
