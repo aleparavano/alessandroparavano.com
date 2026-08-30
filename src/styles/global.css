@@ -489,12 +489,12 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
   text-transform: uppercase;
 }
 .publication-takeaway-block p {
-  max-width: 820px;
-  color: #2e373c;
-  font-family: var(--serif);
-  font-size: clamp(19px, 1.75vw, 22px);
-  line-height: 1.4;
-  letter-spacing: -.008em;
+  max-width: 790px;
+  color: #343c41;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: 0;
 }
 
 .publication-detail-section {
@@ -780,7 +780,7 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
     padding: 17px 0 19px;
   }
   .publication-takeaway-block > span { padding-top: 0; }
-  .publication-takeaway-block p { font-size: 18px; }
+  .publication-takeaway-block p { font-size: 16.5px; }
   .publication-detail-section {
     grid-template-columns: 1fr;
     gap: 12px;
