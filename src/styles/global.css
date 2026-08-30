@@ -1764,3 +1764,21 @@ main.container > h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; }
     gap: 4px;
   }
 }
+
+
+/* About page v8: final spacing refinement */
+.about-page-v2 .about-v2-section,
+.about-page-v2 #awards,
+.about-page-v2 #service {
+  padding-top: 64px;
+  padding-bottom: 72px;
+}
+
+@media (max-width: 720px) {
+  .about-page-v2 .about-v2-section,
+  .about-page-v2 #awards,
+  .about-page-v2 #service {
+    padding-top: 46px;
+    padding-bottom: 52px;
+  }
+}
