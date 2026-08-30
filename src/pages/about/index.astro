@@ -25,28 +25,24 @@ const awards = [
 
 const selectedService = [
   {
-    role: 'Editorial service',
     title: 'Social Media Editor and Editorial Review Board Member',
     org: 'Project Management Journal',
     detail: 'Sage / Project Management Institute',
     href: 'https://journals.sagepub.com/home/pmx'
   },
   {
-    role: 'Scientific leadership',
     title: 'Space Economy Committee Member and ISAM Economy Task Force Co-leader',
     org: 'International Astronautical Federation (IAF)',
     detail: 'Space Economy and in-space manufacturing',
     href: 'https://www.iafastro.org/about/iaf-committees/technical-committees/space-economy-committee.html'
   },
   {
-    role: 'External expert',
     title: 'External Expert',
     org: 'European Union Agency for the Space Programme (EUSPA)',
     detail: 'EU Space Programme',
     href: 'https://www.euspa.europa.eu/opportunities/procurement-grants/call-experts'
   },
   {
-    role: 'External consulting',
     title: 'External Consultant on Space Economy',
     org: 'Organizzazione Internazionale Italo-Latino Americana (IILA)',
     detail: 'Space Economy education and capacity building',
@@ -150,20 +146,9 @@ const breadcrumbSchema = {
 
   <main class="about-page about-page-v2">
     <section class="container about-v2-hero">
-      <div class="about-v2-hero-grid">
-        <div>
-          <h1>Academic profile</h1>
-          <p class="about-v2-role">Alessandro Paravano, PhD</p>
-        </div>
-        <div class="about-v2-hero-intro">
-          <p>Academic appointments, teaching, honors and awards, and selected academic service and affiliations.</p>
-          <div class="about-v2-profile-links" aria-label="Academic profiles">
-            <a href="https://www.som.polimi.it/en/faculty/paravano-alessandro/" target="_blank" rel="me noopener">POLIMI</a>
-            <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=ZLy7CJAAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
-            <a href="https://orcid.org/0000-0002-6884-3712" target="_blank" rel="me noopener">ORCID</a>
-            <a href="https://re.public.polimi.it/cris/rp/rp111035" target="_blank" rel="me noopener">RE.PUBLIC@POLIMI</a>
-          </div>
-        </div>
+      <h1>About</h1>
+      <div class="about-v2-hero-intro">
+        <p>Academic profile, current appointments, teaching, honors and awards, and selected academic service and affiliations.</p>
       </div>
     </section>
 
@@ -247,11 +232,8 @@ const breadcrumbSchema = {
         <div class="about-v2-content about-v2-selected-service-list">
           {selectedService.map((item) => (
             <article class="about-v2-selected-service-row">
-              <span class="about-v2-selected-service-role">{item.role}</span>
-              <div>
-                <h3>{item.title}</h3>
-                <p><a href={item.href} target="_blank" rel="noopener">{item.org} ↗</a>{item.detail && <> <span aria-hidden="true">·</span> {item.detail}</>}</p>
-              </div>
+              <h3>{item.title}</h3>
+              <p><a href={item.href} target="_blank" rel="noopener">{item.org} ↗</a>{item.detail && <> <span aria-hidden="true">·</span> {item.detail}</>}</p>
             </article>
           ))}
         </div>
