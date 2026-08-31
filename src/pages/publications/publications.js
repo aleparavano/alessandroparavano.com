@@ -370,7 +370,7 @@ export const publications = [
     "publisherName": "Elsevier",
     "doi": "10.1016/j.nucengdes.2025.114692",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S0029549325008696",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1304632",
+    "repositoryUrl": "https://hdl.handle.net/11311/1304632",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -489,7 +489,7 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2025.06.067",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S0094576525004199",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1297755",
+    "repositoryUrl": "https://hdl.handle.net/11311/1297755",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -605,7 +605,7 @@ export const publications = [
     "publisherName": "IEEE",
     "doi": "10.1109/EMR.2025.3628802",
     "publisherUrl": "https://ieeexplore.ieee.org/abstract/document/11225865",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1303910",
+    "repositoryUrl": "https://hdl.handle.net/11311/1303910",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -720,7 +720,7 @@ export const publications = [
     "publisherName": "IEEE",
     "doi": "10.1109/TEM.2025.3568298",
     "publisherUrl": "https://doi.org/10.1109/TEM.2025.3568298",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1297756",
+    "repositoryUrl": "https://hdl.handle.net/11311/1297756",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -834,7 +834,7 @@ export const publications = [
     "issn": "0025-1747",
     "doi": "10.1108/MD-08-2024-1751",
     "publisherUrl": "https://doi.org/10.1108/MD-08-2024-1751",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1297759",
+    "repositoryUrl": "https://hdl.handle.net/11311/1297759",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -950,7 +950,7 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2024.11.060",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S0094576524007306",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1293789",
+    "repositoryUrl": "https://hdl.handle.net/11311/1293789",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -1068,7 +1068,7 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2024.09.005",
     "publisherUrl": "https://doi.org/10.1016/j.actaastro.2024.09.005",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1277689",
+    "repositoryUrl": "https://hdl.handle.net/11311/1277689",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -1179,7 +1179,7 @@ export const publications = [
     "publisherName": "IEEE",
     "doi": "10.1109/EMR.2024.3428327",
     "publisherUrl": "https://ieeexplore.ieee.org/document/10589403",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1277688",
+    "repositoryUrl": "https://hdl.handle.net/11311/1277688",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -1307,7 +1307,7 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2024.05.046",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S009457652400300X",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1277687",
+    "repositoryUrl": "https://hdl.handle.net/11311/1277687",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -1423,7 +1423,7 @@ export const publications = [
     "publisherName": "American Society of Civil Engineers",
     "doi": "10.1061/JMENEA.MEENG-5724",
     "publisherUrl": "https://ascelibrary.org/doi/10.1061/JMENEA.MEENG-5724",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1277690",
+    "repositoryUrl": "https://hdl.handle.net/11311/1277690",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -1541,7 +1541,7 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2023.05.001",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S0094576523002242",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1249723",
+    "repositoryUrl": "https://hdl.handle.net/11311/1249723",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -1665,7 +1665,7 @@ export const publications = [
     "publisherName": "Emerald Publishing Limited",
     "doi": "10.1108/MD-04-2022-0516",
     "publisherUrl": "https://www.emerald.com/insight/content/doi/10.1108/MD-04-2022-0516/full/html",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1257458",
+    "repositoryUrl": "https://hdl.handle.net/11311/1257458",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -1781,7 +1781,7 @@ export const publications = [
     "publisherName": "Oxford University Press",
     "doi": "10.1093/oxfordhb/9780198881049.013.0039",
     "publisherUrl": "https://academic.oup.com/edited-volume/62208/chapter-abstract/550154455",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310297",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310297",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -1906,7 +1906,7 @@ export const publications = [
     "publisherName": "Springer Nature Switzerland AG",
     "doi": "10.1007/978-3-031-98997-1_54",
     "publisherUrl": "https://doi.org/10.1007/978-3-031-98997-1_54",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310292",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310292",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -2023,7 +2023,7 @@ export const publications = [
     "publisherName": "Springer Nature Switzerland AG",
     "doi": "10.1007/978-3-031-98997-1_56",
     "publisherUrl": "https://doi.org/10.1007/978-3-031-98997-1_56",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310294",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310294",
     "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
@@ -2246,7 +2246,7 @@ export const publications = [
     "publisherName": "OECD Publishing",
     "doi": "10.1787/a729c640-en",
     "publisherUrl": "https://www.oecd.org/en/publications/the-economics-of-space-sustainability_b2257346-en/full-report/component-10.html",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1278571",
+    "repositoryUrl": "https://hdl.handle.net/11311/1278571",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -2363,7 +2363,7 @@ export const publications = [
     "publisherName": "Edward Elgar Publishing",
     "doi": "10.4337/9781802208078.00043",
     "publisherUrl": "https://www.elgaronline.com/doi/10.4337/9781802208078.00043",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1257456",
+    "repositoryUrl": "https://hdl.handle.net/11311/1257456",
     "repositoryLabel": "Open access",
     "fullPage": true,
     "themes": [
@@ -2580,7 +2580,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1297909",
+    "repositoryUrl": "https://hdl.handle.net/11311/1297909",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
   },
   {
@@ -2595,7 +2595,7 @@ export const publications = [
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025",
     "doi": "10.52202/083099-0031",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1311043",
+    "repositoryUrl": "https://hdl.handle.net/11311/1311043",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
   },
   {
@@ -2611,7 +2611,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1311039",
+    "repositoryUrl": "https://hdl.handle.net/11311/1311039",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
   },
   {
@@ -2626,11 +2626,11 @@ export const publications = [
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025 · pp. 419–428",
     "doi": "10.52202/083102-0024",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1311038",
+    "repositoryUrl": "https://hdl.handle.net/11311/1311038",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/",
     "publishedVersionTitle": "Small change or big bang? The shift from legacy to new space project planning",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2026.07.011",
-    "publishedVersionLabel": "Published version"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2644,7 +2644,7 @@ export const publications = [
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025 · pp. 288–301",
     "doi": "10.52202/083105-0027",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1311037",
+    "repositoryUrl": "https://hdl.handle.net/11311/1311037",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
   },
   {
@@ -2655,12 +2655,14 @@ export const publications = [
       "Riccardo Bernocchi",
       "Alessandro Paravano",
       "Gloria Puliga",
-      "R. Manzini",
+      "Linda Ponta",
+      "Raffaella Manzini",
       "Paolo Trucco"
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025 · pp. 119–133",
     "doi": "10.52202/083101-0012",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310267",
     "recordUrl": "https://arl.liuc.it/esploro/outputs/conferenceProceeding/A-comprehensive-assessment-of-space-RD/991001132529605126",
     "recordLabel": "Record",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
@@ -2677,7 +2679,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Sydney, Australia · 29 September–3 October 2025 · pp. 1–9",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310265",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310265",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2025/"
   },
   {
@@ -2686,6 +2688,8 @@ export const publications = [
     "title": "Unveiling the influence of emerging project ecology on megaproject ecosystems: a network analysis of the commercial space station case",
     "authors": [
       "Alessandro Paravano",
+      "Elisa Negrisolo",
+      "Sofia Morrone",
       "Giorgio Locatelli",
       "Paolo Trucco"
     ],
@@ -2705,10 +2709,10 @@ export const publications = [
     ],
     "venue": "9th International Conference on Renewable Energy and Conservation (ICREC)",
     "details": "Rome, Italy · 22–24 November 2024",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310294",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310294",
     "publishedVersionTitle": "Towards a Net-Zero Infrastructure: Proposal for an Enhanced LCA Model for Power Plants",
     "publishedVersionUrl": "https://doi.org/10.1007/978-3-031-98997-1_56",
-    "publishedVersionLabel": "Published chapter"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2722,10 +2726,10 @@ export const publications = [
     ],
     "venue": "9th International Conference on Renewable Energy and Conservation (ICREC)",
     "details": "Rome, Italy · 22–24 November 2024",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310292",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310292",
     "publishedVersionTitle": "Towards a Net-Zero Infrastructure: A CO₂-Based Taxonomy for Power Plants",
     "publishedVersionUrl": "https://doi.org/10.1007/978-3-031-98997-1_54",
-    "publishedVersionLabel": "Published chapter"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2739,11 +2743,11 @@ export const publications = [
     "venue": "International Astronautical Congress (IAC)",
     "details": "Milan, Italy · 14–18 October 2024 · pp. 418–427",
     "doi": "10.52202/078383-0033",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1279185",
+    "repositoryUrl": "https://hdl.handle.net/11311/1279185",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2024/",
     "publishedVersionTitle": "Framing the dynamics of risk landscape amidst space economy trends",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2025.06.067",
-    "publishedVersionLabel": "Published version"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2757,7 +2761,7 @@ export const publications = [
     "venue": "International Astronautical Congress (IAC)",
     "details": "Milan, Italy · 14–18 October 2024 · pp. 113–129",
     "doi": "10.52202/078380-0015",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1279186",
+    "repositoryUrl": "https://hdl.handle.net/11311/1279186",
     "conferenceUrl": "https://www.iafastro.org/events/iac/international-astronautical-congress-2024/",
     "publishedVersionTitle": "Toward the LEO economy: A value assessment of commercial space stations for space and non-space users",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2024.11.060",
@@ -2780,7 +2784,7 @@ export const publications = [
   {
     "type": "conference",
     "year": 2024,
-    "title": "Projects as interventions: Barriers and Drivers for Benefits Realisation",
+    "title": "Projects as interventions: Barriers and Drivers to Benefits Realisation",
     "authors": [
       "Alessandro Paravano",
       "Giorgio Locatelli",
@@ -2795,20 +2799,6 @@ export const publications = [
   },
   {
     "type": "conference",
-    "year": 2024,
-    "title": "Assessing the value of the Copernicus users: a system architecture approach",
-    "authors": [
-      "Alessandro Paravano",
-      "Giorgio Locatelli",
-      "Danielle Wood",
-      "Paolo Trucco"
-    ],
-    "venue": "IEEE Aerospace Conference",
-    "details": "Montana, United States · 2–9 March 2024",
-    "conferenceUrl": "https://www.aeroconf.org/"
-  },
-  {
-    "type": "conference",
     "year": 2023,
     "title": "Developing new Commercial Space Stations: How do potential users perceive their value?",
     "authors": [
@@ -2820,7 +2810,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Baku, Azerbaijan · 2–6 October 2023",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1263442",
+    "repositoryUrl": "https://hdl.handle.net/11311/1263442",
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2023/",
     "publishedVersionTitle": "Toward the LEO economy: A value assessment of commercial space stations for space and non-space users",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2024.11.060",
@@ -2840,11 +2830,11 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Baku, Azerbaijan · 2–6 October 2023",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1263443",
+    "repositoryUrl": "https://hdl.handle.net/11311/1263443",
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2023/",
     "publishedVersionTitle": "The impact of the New Space Economy on sustainability: an overview",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2024.05.046",
-    "publishedVersionLabel": "Published version"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2859,7 +2849,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Baku, Azerbaijan · 2–6 October 2023",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1263790",
+    "repositoryUrl": "https://hdl.handle.net/11311/1263790",
     "recordUrl": "https://iafastro.directory/iac/paper/id/76711/abstract-pdf/IAC-23%2CE6%2C3%2C6%2Cx76711.brief.pdf",
     "recordLabel": "Abstract",
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2023/"
@@ -2876,13 +2866,13 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Baku, Azerbaijan · 2–6 October 2023 · pp. 381–392",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1263440",
+    "repositoryUrl": "https://hdl.handle.net/11311/1263440",
     "recordUrl": "https://dl.iafastro.directory/event/IAC-2023/paper/79727/",
     "recordLabel": "IAF record",
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2023/",
     "publishedVersionTitle": "Evolving governance in the space sector: From Legacy Space to New Space models",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2024.09.005",
-    "publishedVersionLabel": "Published version"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2903,7 +2893,7 @@ export const publications = [
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2023/",
     "publishedVersionTitle": "Framing the dynamics of risk landscape amidst space economy trends",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2025.06.067",
-    "publishedVersionLabel": "Later journal article"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2931,7 +2921,7 @@ export const publications = [
     ],
     "venue": "IAF Global Space Conference on Climate Change (GLOC)",
     "details": "Oslo, Norway · 23–25 May 2023 · pp. 659–673",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1279188"
+    "repositoryUrl": "https://hdl.handle.net/11311/1279188"
   },
   {
     "type": "conference",
@@ -2950,7 +2940,7 @@ export const publications = [
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2022/",
     "publishedVersionTitle": "What is value in the New Space Economy? The end-users’ perspective on satellite data and solutions",
     "publishedVersionUrl": "https://doi.org/10.1016/j.actaastro.2023.05.001",
-    "publishedVersionLabel": "Published version"
+    "publishedVersionLabel": "Related journal article"
   },
   {
     "type": "conference",
@@ -2963,7 +2953,7 @@ export const publications = [
     ],
     "venue": "International Astronautical Congress (IAC)",
     "details": "Paris, France · 18–22 September 2022 · pp. 197–209",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1257454",
+    "repositoryUrl": "https://hdl.handle.net/11311/1257454",
     "recordUrl": "https://iafastro.directory/iac/paper/id/70013/abstract-pdf/IAC-22%2CE3%2C3%2C1%2Cx70013.brief.pdf",
     "recordLabel": "Abstract",
     "conferenceUrl": "https://www.iafastro.org/events/iac/iac-2022/"
@@ -3014,7 +3004,7 @@ export const publications = [
   {
     "type": "conference",
     "year": 2022,
-    "title": "Hey look up! The benefits of satellite technologies to monitor and manage megaprojects",
+    "title": "Hey, look up! The benefits of satellite technologies to monitor and manage megaprojects",
     "authors": [
       "C. Mariani",
       "Alessandro Paravano",
@@ -3110,7 +3100,7 @@ export const publications = [
     "details": "Vol. 57, No. 2 · pp. 143–154",
     "doi": "10.1177/87569728261420386",
     "publisherUrl": "https://journals.sagepub.com/doi/10.1177/87569728261420386",
-    "repositoryUrl": "https://re.public.polimi.it/handle/11311/1310300",
+    "repositoryUrl": "https://hdl.handle.net/11311/1310300",
     "repositoryLabel": "Repository",
     "fullPage": false,
     "themes": [
