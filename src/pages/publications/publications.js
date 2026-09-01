@@ -18,8 +18,8 @@ export const publications = [
     "publisherName": "Taylor & Francis",
     "doi": "10.1080/09537287.2026.2695694",
     "publisherUrl": "https://www.tandfonline.com/doi/full/10.1080/09537287.2026.2695694",
-    "repositoryUrl": null,
-    "repositoryLabel": null,
+    "repositoryUrl": "https://hdl.handle.net/11311/1324428",
+    "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
       "Space Economy",
@@ -139,8 +139,8 @@ export const publications = [
     "publisherName": "IEEE",
     "doi": "10.1109/TEM.2026.3697823",
     "publisherUrl": "https://ieeexplore.ieee.org/document/11561058/",
-    "repositoryUrl": null,
-    "repositoryLabel": null,
+    "repositoryUrl": "https://hdl.handle.net/11311/1324430",
+    "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
       "Complex Infrastructures",
@@ -254,8 +254,8 @@ export const publications = [
     "publisherName": "Elsevier on behalf of the International Academy of Astronautics",
     "doi": "10.1016/j.actaastro.2026.07.011",
     "publisherUrl": "https://www.sciencedirect.com/science/article/pii/S0094576526004637",
-    "repositoryUrl": null,
-    "repositoryLabel": null,
+    "repositoryUrl": "https://hdl.handle.net/11311/1324431",
+    "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
       "Space Economy",
@@ -2134,8 +2134,8 @@ export const publications = [
     "issn": "1995-7807",
     "doi": "10.61092/iaea.qp5y-yn4t",
     "publisherUrl": "https://www.iaea.org/publications/15633/developing-a-roadmap-for-the-commercial-deployment-of-nuclear-hydrogen-production",
-    "repositoryUrl": null,
-    "repositoryLabel": null,
+    "repositoryUrl": "https://hdl.handle.net/11311/1324434",
+    "repositoryLabel": "Repository",
     "fullPage": true,
     "themes": [
       "Nuclear Hydrogen",
@@ -2565,6 +2565,7 @@ export const publications = [
     "venue": "IEEE International Systems Conference (SysCon)",
     "details": "Halifax, Canada · 6–9 April 2026 · pp. 1–8",
     "doi": "10.1109/SysCon66367.2026.11503609",
+    "repositoryUrl": "https://hdl.handle.net/11311/1324432",
     "conferenceUrl": "https://2026.ieeesyscon.org/"
   },
   {
@@ -2709,7 +2710,6 @@ export const publications = [
     ],
     "venue": "9th International Conference on Renewable Energy and Conservation (ICREC)",
     "details": "Rome, Italy · 22–24 November 2024",
-    "repositoryUrl": "https://hdl.handle.net/11311/1310294",
     "publishedVersionTitle": "Towards a Net-Zero Infrastructure: Proposal for an Enhanced LCA Model for Power Plants",
     "publishedVersionUrl": "https://doi.org/10.1007/978-3-031-98997-1_56",
     "publishedVersionLabel": "Related journal article"
@@ -2726,7 +2726,6 @@ export const publications = [
     ],
     "venue": "9th International Conference on Renewable Energy and Conservation (ICREC)",
     "details": "Rome, Italy · 22–24 November 2024",
-    "repositoryUrl": "https://hdl.handle.net/11311/1310292",
     "publishedVersionTitle": "Towards a Net-Zero Infrastructure: A CO₂-Based Taxonomy for Power Plants",
     "publishedVersionUrl": "https://doi.org/10.1007/978-3-031-98997-1_54",
     "publishedVersionLabel": "Related journal article"
@@ -3014,6 +3013,7 @@ export const publications = [
     ],
     "venue": "AIDI “Francesco Turco” Summer School",
     "details": "Sanremo, Italy · 7–9 September 2022",
+    "repositoryUrl": "https://hdl.handle.net/11311/1324445",
     "recordUrl": "https://www.summerschool-aidi.it/images/papers/session_3_2022/ID_037.pdf",
     "recordLabel": "Full paper"
   },
@@ -3053,7 +3053,7 @@ export const publications = [
     ],
     "venue": "ESA Living Planet Symposium",
     "details": "Bonn, Germany · 23–27 May 2022",
-    "conferenceUrl": "https://lps22.esa.int/"
+    "conferenceUrl": "https://eo4society.esa.int/event/living-planet-symposium-2022/"
   },
   {
     "type": "conference",
@@ -3068,7 +3068,7 @@ export const publications = [
     "details": "Bonn, Germany · 23–27 May 2022",
     "recordUrl": "https://www.researchgate.net/publication/364311887_Stakeholders_engagement_as_a_tool_to_foster_capacity_building_in_the_New_Space_Economy",
     "recordLabel": "Record",
-    "conferenceUrl": "https://lps22.esa.int/"
+    "conferenceUrl": "https://eo4society.esa.int/event/living-planet-symposium-2022/"
   },
   {
     "type": "conference",

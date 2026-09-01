@@ -144,6 +144,8 @@ const breadcrumbSchema = {
   <meta property="og:title" content={publication.title} />
   <meta property="og:description" content={publication.seoDescription || publication.takeaway || publication.about} />
   <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content="https://alessandroparavano.com/images/alessandro-paravano.png" />
+  <meta property="og:image:alt" content="Portrait of Alessandro Paravano" />
   {publication.publicationDate && <meta property="article:published_time" content={publication.publicationDate} />}
 
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
